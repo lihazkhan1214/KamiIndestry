@@ -28,15 +28,15 @@ function Navbar() {
    <div className='hidden lg:block navbar flex justify-center'>
       {
         navlinks.map((item)=>(
-          <Link className='mx-6 text-[#1A1D3A] text-xl font-medium hover:text-[#2697D3]' key={item.title} href={item.url}>{item.title}</Link>
+          <Link className='mx-6 text-[#1A1D3A] text-lg font-medium hover:text-[#2697D3]' key={item.title} href={item.url}>{item.title}</Link>
         ))
       }
 </div>
 <div className='hidden lg:block flex items-center '>
 
       
-      <Link href='/cart' className='mx-6 text-[#1A1D3A] text-xl font-medium hover:text-[#2697D3]'> <CartBadge /> MyCart</Link>
-      <Link href='#' className='mx-6 text-[#1A1D3A] text-xl font-medium hover:text-[#2697D3]'> <AccountCircleIcon  className=""/> MyAccount</Link>
+      <Link href='/cart' className='mx-6 text-[#1A1D3A] text-lg font-medium hover:text-[#2697D3]'> <CartBadge /> MyCart</Link>
+      <Link href='#' className='mx-6 text-[#1A1D3A] text-lg font-medium hover:text-[#2697D3]'> <AccountCircleIcon  className=""/> MyAccount</Link>
  
   </div>
 
