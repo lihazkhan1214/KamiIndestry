@@ -28,7 +28,7 @@ function ShopCatagory() {
             <div className="padding-x py-10 bg-[#E3ECF7] relative">
 
                 <div className='flex justify-center items-center'>
-                    <Image src='/Categories.png' alt='not found' width={100} height={500} />
+                    <Image src='/Categories.png' alt='not found' width={100} height={100} />
 
                 </div>
                 <h1 className='text-center  globalHeading'>Shop By Catogories</h1>
