@@ -5,12 +5,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
+import { useRouter } from 'next/navigation';
 
 
 export default function CategoryCard() {
+  const router=useRouter();
   return (
     <Card className="mx-2" sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+      <CardActionArea onClick={()=>router.push('/product/123')}>
         <CardMedia
           component="img"
           height="80"
@@ -41,7 +43,7 @@ export default function CategoryCard() {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <button className='w-full border-[#1D1D1D] border-2 py-2 font-bold text-[#2D2C40]'   >
+        <button className='w-full border-[#1D1D1D] border-2 py-2 font-bold text-[#2D2C40]'  onClick={()=>router.push('/cart')} >
           Add Card
         </button>
       </CardActions>

@@ -41,12 +41,12 @@ function Shop() {
 
                 <h1 className='my-2 globalHeading text-center'>Product categories</h1>
 
-                <div className='mt-10 flex justify-center'>
+                <div className='mt-10 flex flex-wrap lg:flex-row justify-center'>
 
                     {
                         Links.map((item, ind) => (
 
-                            <Link key={ind} className={Ct ===`${item.category}` ? 'w-[180px]  mx-10 py-2 text-center px-2 bg-[#1A1D3A] text-lg font-medium text-[#FFF]' : ' w-[180px] mx-10 py-2 text-center px-2 text-[#1A1D3A] border-2  border-[#1A1D3A] text-lg font-medium '} href={item.href} >{item.title}</Link>
+                            <Link key={ind} className={Ct ===`${item.category}` ? 'w-[180px] h-[50px] mt-5  mx-10 py-2 text-center px-2 bg-[#1A1D3A] text-lg font-medium text-[#FFF]' : ' h-[50px] mt-5 w-[180px] mx-10 py-2 text-center px-2 text-[#1A1D3A] border-2  border-[#1A1D3A] text-lg font-medium '} href={item.href} >{item.title}</Link>
                 ))
                     }
 
