@@ -145,7 +145,7 @@ function Productid() {
                             </div>
 
                             <form className='my-2 flex flex-col' action="">
-                            <textarea className='my-2 py-2 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' name="" id="" cols="30" rows="5" placeholder='Tour Review'></textarea>
+                            <textarea  className='my-2 py-2 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC] h-[120px]' name="" id=""  placeholder='Tour Review'></textarea>
                             <input className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="text" placeholder='Name*' />
                             
                             <input className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="email" placeholder='Email*' />

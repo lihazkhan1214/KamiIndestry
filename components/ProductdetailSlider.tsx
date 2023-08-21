@@ -11,7 +11,7 @@ function ProductdetailSlider() {
       <div className=" ">
         {
           pimages.map((item, ind) => (
-            <Image key={ind} src={`${item}`} className='mb-3 cursor-pointer' onClick={() => setindex(ind)}  width={100} height={100} />
+            <Image key={ind} src={`${item}`} alt='not found' className='mb-3 cursor-pointer' onClick={() => setindex(ind)}  width={100} height={100} />
           ))
         }
 

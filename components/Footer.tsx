@@ -44,7 +44,7 @@ function Footer() {
 
           {
             info.map((item, ind) => (
-              <div className='flex items-center'>
+              <div className='flex items-center' key={ind}>
                 {item.Icon}
                 <span className='text-[#181F36] text-sm'>{item.desc}​</span>
 

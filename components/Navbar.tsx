@@ -22,13 +22,13 @@ function Navbar() {
 
 
     <div className='flex items-center'>
-    <Image src='/ecomercelogo.png' alt='' height={30} width={60}/>
+    <Image src='/ecomercelogo.png' alt='not found' height={30} width={60}/>
  
     </div>
    <div className='hidden lg:block navbar flex justify-center'>
       {
-        navlinks.map((item)=>(
-          <Link className='mx-6 text-[#1A1D3A] text-lg font-medium hover:text-[#2697D3]' key={item.title} href={item.url}>{item.title}</Link>
+        navlinks.map((item,ind)=>(
+          <Link key={ind} className='mx-6 text-[#1A1D3A] text-lg font-medium hover:text-[#2697D3]'  href={item.url}>{item.title}</Link>
         ))
       }
 </div>

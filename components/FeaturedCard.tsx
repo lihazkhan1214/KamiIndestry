@@ -5,11 +5,19 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
+import Link from 'next/link';
+// import { useRouter } from 'next/router';
+
 
 
 export default function FeaturedCard() {
+  // const router=useRouter();
+  // console.log(router)
+
   return (
+   
     <Card className="mx-2" sx={{ maxWidth: 345 }}>
+   
       <CardActionArea>
         <CardMedia
           component="img"
@@ -37,7 +45,9 @@ export default function FeaturedCard() {
           <Typography className='text-justify text-[#424242]' variant="body2"  color="text.secondary">
           KAMI EYELASH for Volume Fans Professional Precision Stainless Steel Non-Slip Tip Eyelash Tweezers Curved Lash Extensions Tweezers Eyelash Extension Tools by GEMERRY</Typography>
         </CardContent>
+     
       </CardActionArea>
+      
       <CardActions>
         <button className='w-full border-[#1D1D1D] border-2 py-2 font-bold text-[#2D2C40]'   >
           Add Card

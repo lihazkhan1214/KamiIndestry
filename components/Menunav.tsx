@@ -27,8 +27,8 @@ const Menunav = () => {
         <div className="absolute w-[300px] right-4 mt-2 bg-white border rounded shadow-md">
           <ul>
             {
-              navlinks.map((item) => (
-                <li className="px-4 py-2 hover:bg-gray-100">
+              navlinks.map((item,ind) => (
+                <li className="px-4 py-2 hover:bg-gray-100" key={ind}>
                   <Link className='break-normal text-[#1A1D3A]' key={item.title} href={item.url} onClick={toggleMenu}>{item.title}</Link></li>
               ))
             }
