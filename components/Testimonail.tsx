@@ -11,7 +11,7 @@ function Testimonail() {
 
 
                 </div>
-                <h1 className='globalHeading text-center mb-3'>What Our Client Says About Our <br></br>Products</h1>
+                <h1 className='globalHeading text-[#181F36] text-center mb-3'>What Our Client Says About Our <br></br>Products</h1>
 
 <TestimonialSlider/>
 

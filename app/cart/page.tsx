@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import Image from 'next/image';
 import AddIcon from '@mui/icons-material/Add';
@@ -35,42 +36,56 @@ function Cart() {
     return (
         <>
             {/* this is cart background image */}
-            <div className="h-[calc(100vh-80px)] bg-[url('/cartbg.png')] bg-no-repeat bg-cover flex items-center justify-center relative z-0 max-w-[1440px] mx-auto">
+
+
+
+            <div className="h-[calc(100vh-80px)] bg-[url('/cartbg.png')] bg-no-repeat bg-cover  flex items-center justify-center relative z-0 max-w-[1440px] mx-auto">
+
 
                 <h1 className='title text-[#FFF] text-center'>Cart</h1>
-
             </div>
+
+
+
+
+
+
+
+
+
             <div className="padding-x py-10">
 
                 <div className='bg-[#FFF] py-5'>
                     <h3 className='mx-4 text-[#181F36] globalHeading'>Here’s what you’re getting!</h3>
                     <hr className='mx-4 border-2 my-2 border-[#242648]' />
-                    <div className='overflow-x-auto'>
+                    <div className="overflow-x-auto">
                         <table className='table-auto w-full border-2'>
                             <thead className='bg-[#252063] text-[#FFF] text-lg'>
-                                <th className='pl-6 -6 py-3 text-start'>Product</th>
-                                <th className='py-3  text-center'>Unit Price</th>
-                                <th className='py-3 text-center'>Quantity</th>
-                                <th className='py-3 text-center'>Stock Status</th>
-                                <th className='py-3 text-center'>Total</th>
-                                <th></th>
+                                <tr>
+                                    <th className='pl-6 -6 py-3 text-start whitespace-nowrap'>Product</th>
+                                    <th className='py-3 text-center whitespace-nowrap'>Unit Price</th>
+                                    <th className='py-3 text-center whitespace-nowrap'>Quantity</th>
+                                    <th className='py-3 text-center whitespace-nowrap'>Stock Status</th>
+                                    <th className='py-3 text-center whitespace-nowrap'>Total</th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody>
                                 {
                                     carts.map((item, ind) => (
                                         <tr className='border-b-2 border-[#242648]' key={ind}>
-                                            <td className=' p-5 flex items-center gap-2'>
+                                            <td className=' p-5 flex flex-col lg:flex-row items-center gap-2'>
                                                 <Image src='/productdt1.png' alt='not found' width={100} height={100} />
-                                                <span className='text-sm  font-semibold'>Eyelash Mirror</span>
+                                                <div className='text-sm  font-semibold '>Eyelash Mirror</div>
 
                                             </td>
 
                                             <td className='text-sm  font-semibold text-center'>10$</td>
                                             <td className='text-sm   text-center font-semibold'>
-                                                <button className='text-[#242648] border-2 border-[#242648] rounded-lg px-6 py-4 text-center gap-2'> <RemoveIcon className='mx-2' />2<AddIcon className='mx-2' /></button>
+                                                <button className='text-[#242648] border-2 border-[#242648] rounded-lg px-6 py-4 flex flex-nowrap text-center gap-2'> <RemoveIcon className='mx-2' />2<AddIcon className='mx-2' /></button>
 
                                             </td>
-                                            <td className='text-sm text-center  font-semibold'>In Stock</td>
+                                            <td className='text-sm text-center  font-semibold whitespace-nowrap'>In Stock</td>
                                             <td className='text-sm text-center  font-semibold'>$20</td>
                                             <td className='text-sm text-center  font-semibold'><button className='bg-[#242648] text-[#FFF] rounded-lg px-11 py-4'>Remove</button></td>
 
@@ -110,15 +125,16 @@ function Cart() {
                             <h1 className='text-[#181F36] text-xl font-bold'>Order Details:</h1>
                             <div className='flex justify-between my-3'>
 
-                                <span className='text-[#181F36] text-lg font-normal'>3Items</span><span className='text-[#181F36] text-lg font-normal'>$30</span>
+                                <div className='text-[#181F36] text-lg font-normal'>3Items</div>
+                                <div className='text-[#181F36] text-lg font-normal'>$30</div>
                             </div>
                             <div className='flex justify-between my-3'>
 
-                                <span className='text-[#181F36] text-lg font-normal'>Delivery Fee</span><span className='text-[#181F36] text-lg font-normal'>$10</span>
+                                <div className='text-[#181F36] text-lg font-normal'>Delivery Fee</div><div className='text-[#181F36] text-lg font-normal'>$10</div>
                             </div>
                             <div className='flex justify-between my-3'>
 
-                                <span className='text-[#181F36] text-xl font-bold'>Sub Total</span><span className='text-[#181F36] text-xl font-bold'>$10</span>
+                                <div className='text-[#181F36] text-xl font-bold'>Sub Total</div><div className='text-[#181F36] text-xl font-bold'>$10</div>
                             </div>
                             <button className=' w-full text-[rgb(255,255,255)] text-2xl font-normal text-center mb-3 p-4 rounded-md border-2  bg-[#242648]'>Add Payment</button>
                             <button className=' w-full text-[#242648] text-2xl font-normal text-center mb-3 p-4 rounded-md border-2  border-[#242648]'>Cancel</button>

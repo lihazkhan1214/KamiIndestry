@@ -17,7 +17,7 @@ function Navbar() {
   
   return (
    <>
-  <header className='h-[80px] padding-x bg-[#F9FBFE] flex justify-between items-center '>
+  <header className='h-[80px] px-16 sm:padding-x bg-[#F9FBFE] flex justify-between items-center '>
 
 
 

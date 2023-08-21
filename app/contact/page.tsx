@@ -26,11 +26,18 @@ function Contact() {
     return (
         <>
             {/* this si contact us background image */}
-            <div className="h-[calc(100vh-80px)] bg-[url('/contactbg.jpg')] bg-no-repeat bg-cover  flex items-center justify-center relative z-0 max-w-[1440px] mx-auto">
+           
+            <div className="relative">
+        <div className=" bg-[url('/contactbg.jpg')] bg-cover bg-no-repeat bg-center h-[calc(100vh-80px)]">
 
-                <h1 className='title text-[#FFF] text-center'>Contact Us</h1>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <h1 className='title text-[#FFF] text-center'>Contact Us</h1>
+          </div>
+        </div>
+      </div>
 
-            </div>
+
+
             <div className="padding-x py-10 flex  flex-col md:flex-row gap-5">
                 <div className='flex-1'>
                     <h1 className='globalHeading text-[#363636] mb-3'>Contact Info</h1>

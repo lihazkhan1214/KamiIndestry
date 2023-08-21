@@ -11,7 +11,7 @@ function Gallery() {
                     <Image src="/Gallery.png" alt='' height={60} width={120} />
                 </div>
                 <h1 className='globalHeading text-[#181F36] mb-3 text-center'>Our Gallery</h1>
-                <div className='grid grid-cols-2 gap-2'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 gap-2'>
                     <div className='w-full relative h-[180px]'>
                         <Image src="/gallery1.png" alt='' fill />
 
@@ -27,7 +27,7 @@ function Gallery() {
 
 
                 </div>
-                <div className='grid grid-cols-3 gap-2 my-2'>
+                <div className='grid grid-cols-1 sm:grid-cols-3 gap-2 my-2'>
                     {
                         gallerImages.map((item,ind)=>(
                             <div className='w-full relative h-[180px]' key={ind}>
