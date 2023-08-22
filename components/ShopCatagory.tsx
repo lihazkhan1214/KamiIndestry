@@ -44,15 +44,15 @@ function ShopCatagory() {
 
                     {
                         categories.map((item, ind) => (
-                            <Link href={item.url} className=''key={ind}>
+                            <Link href={`${item?.url}`} className='' key={ind}>
                                 <div className="relative text-center">
-                                    <Image src={item.img} alt="Your Image" width={400} height={400} className="block mx-auto" />
+                                    <Image src={`${item?.img}`} alt="Your Image" width={400} height={400} className="block mx-auto" />
                                     <div className="absolute mb-6 inset-0 flex items-end justify-center cursor-pointe ">
                                         <Image className=' border-2 border-dashed rounded-full border-spacing-2' src="/arrow.png" alt='' width={60} height={60} />
                                     </div>
                                 </div>
 
-                                <h3 className='cardheading text-center'>{item.title}</h3>
+                                <h3 className='cardheading text-center'>{item?.title}</h3>
                             </Link>
                         ))
                     }
