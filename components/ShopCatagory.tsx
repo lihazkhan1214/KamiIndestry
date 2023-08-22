@@ -18,6 +18,12 @@ const categories = [
         title: "Eyelash Mirrors",
         url:"/shop/#mirror"
     },
+    ,
+    {
+        img: "/cate3.png",
+        title: "Municure Instrument",
+        url:"/shop/#municure"
+    },
 
 ]
 
@@ -34,7 +40,7 @@ function ShopCatagory() {
                 <h1 className='text-center  globalHeading'>Shop By Catogories</h1>
                 <p className='globalpara text-center'>“Experience perfection with Kami Industries Tweezers – where quality and innovation unite.”</p>
 
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 content-between'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 content-between'>
 
                     {
                         categories.map((item, ind) => (

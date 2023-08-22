@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Eyebrow from '@/components/Eyebrow';
 import Eyelash from '@/components/Eyelash';
 import Mirror from '@/components/Mirror';
+import Municure from '@/components/Municure';
 
 const Links = [
     {
@@ -18,6 +19,10 @@ const Links = [
         category: "mirror",
         href: "#mirror",
         title: "Eyelash Mirrors"
+    }, {
+        category: "municure",
+        href: "#municure",
+        title: "Municure Instruments"
     }
 ];
 
@@ -30,8 +35,10 @@ function Shop() {
             setCt('eyebrow')
         else if (arg === 'eyelash')
             setCt('eyelash')
-        else
+        else if(arg=='mirror')
             setCt('mirror');
+            else
+            setCt('municure')
     }
 
 
@@ -46,7 +53,7 @@ function Shop() {
                     {
                         Links.map((item, ind) => (
 
-                            <Link key={ind} className={Ct ===`${item.category}` ? 'w-[180px] h-[50px] mt-5  mx-10 py-2 text-center px-2 bg-[#1A1D3A] text-lg font-medium text-[#FFF]' : ' h-[50px] mt-5 w-[180px] mx-10 py-2 text-center px-2 text-[#1A1D3A] border-2  border-[#1A1D3A] text-lg font-medium '} href={item.href} >{item.title}</Link>
+                            <Link key={ind} className={Ct ===`${item.category}` ? 'w-[200px] h-[50px] mt-5  mx-4 py-2 text-center px-2 bg-[#1A1D3A] text-lg font-medium text-[#FFF]' : ' h-[50px] mt-5 w-[200px] mx-4 py-2 text-center px-2 text-[#1A1D3A] border-2  border-[#1A1D3A] text-lg font-medium '} href={item.href} >{item.title}</Link>
                 ))
                     }
 
@@ -58,6 +65,7 @@ function Shop() {
             <Eyebrow/>
             <Eyelash/>
             <Mirror/>
+            <Municure/>
 
 
         </>

@@ -1,47 +1,36 @@
-"use client"
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Link, Button, CardActionArea, CardActions } from '@mui/material';
+import React from 'react';
+import Image from 'next/image';
 import StarIcon from '@mui/icons-material/Star';
-import { useRouter } from 'next/navigation'
-// import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
-// import { useRouter } from 'next/router';
-
-
-
-export default function FeaturedCard() {
-  const router=useRouter();
-
-  const  fun1=()=>{
-  
-    router.push('/product/123');
-  }
-
-  return (<>
-
-
-    <Card className="mx-2" sx={{ maxWidth: 345 }}>
-    
-      <CardActionArea onClick={()=>fun1()}>
-        <CardMedia
-          component="img"
-          height="80"
-          image="/featuredproduct1.png"
+function FeaturedCard() {
+  const router = useRouter()
+  return (
+    <>
+      <div
+        className="block   shadow-xs sm:shadow-md md:shadow-lg lg:shadow-xl  border-[1px]  border-[#B0B0B0] p-2    mx-2 rounded-lg bg-[#FFF]">
+        <Image
+          className="rounded-t-lg cursor-pointer"
+          src="/gallery2.png"
           alt=""
+          width={800}
+          height={200}
+          onClick={() => router.push('/product/12')}
         />
-        <CardContent>
-          <div className='flex justify-between'>
-            <Typography className='cardheading' gutterBottom variant="h5" component="div">
-              Lizard
-            </Typography>
-            <Typography gutterBottom component="div">
+
+
+        <div className="p-6">
+          <div className='cursor-pointer' onClick={()=>router.push('/product/123')}>
+          <div className='flex justify-between cursor-pointer1'>
+
+            <h5 className='cardheading'>
+              Tweezer
+            </h5>
+            <p>
               $4.5
-            </Typography>
-          </div >
+            </p>
+          </div>
           <div className=" mb-3 flex justify-center items-center">
             <StarIcon style={{ color: "#FBA122" }} />
             <StarIcon style={{ color: "#FBA122" }} />
@@ -50,19 +39,25 @@ export default function FeaturedCard() {
             <StarIcon style={{ color: "#FBA122" }} />
 
           </div>
-          <Typography className='text-justify text-[#424242]' variant="body2" color="text.secondary">
-            KAMI EYELASH for Volume Fans Professional Precision Stainless Steel Non-Slip Tip Eyelash Tweezers Curved Lash Extensions Tweezers Eyelash Extension Tools by GEMERRY</Typography>
-        </CardContent>
+          <p className=' mb-4 text-justify text-sm text-[#424242]'>
+            KAMI EYELASH for Volume Fans Professional Precision Stainless Steel Non-Slip Tip Eyelash Tweezers Curved Lash Extensions Tweezers Eyelash Extension Tools by GEMERRY</p>
+            </div>
+          <button className='w-full  border-[#1D1D1D] rounded-[2px] border-[1px] py-2 font-bold text-[#2D2C40]' onClick={() => router.push('/cart')} >
+            Add Cart
 
-      </CardActionArea>
-    
+          </button>
+        </div>
+      </div>
 
-    <CardActions>
-      <button className='w-full border-[#1D1D1D] border-2 py-2 font-bold text-[#2D2C40]'  onClick={()=>router.push('/cart')} >
-        Add Card
-      </button>
-    </CardActions>
-  </Card >
+
+
+
+
+
+
+
     </>
-  );
+  )
 }
+
+export default FeaturedCard
