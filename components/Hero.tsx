@@ -20,7 +20,7 @@ const Hero = () => {
         
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <p className="text-white my-5 globalpara  sm:text-3xl text-center ">Elevate your Grooming with kami Idustries Premium Tweezers</p>
-          <h1 className="text-white my-5 text-center title  lg:text-[180px] sm:font-ex"> Tweezers and <br className="" />Mirrors</h1>
+          <h1 className="text-white my-5 text-center title  lg:text-[130px] sm:font-ex"> Tweezers and <br className="" />Mirrors</h1>
           <p className="text-white my-5 globalpara sm:text-3xl text-center">Explore Exclusive Hair Removal, Stainless Steel <br />, Eyelash Tweezers and Mirrors</p>
           <button className="my-5 text-lg font-semibold rounded text-[#1A1D3A] py-3 px-10 bg-[#FFF]">Shop Now</button>
 
