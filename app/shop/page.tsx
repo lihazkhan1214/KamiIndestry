@@ -62,11 +62,11 @@ function Shop() {
             </div>
 
         </div >
-            <Eyebrow/>
-            <Eyelash/>
-            <Mirror/>
-            <Municure/>
-
+           
+<Eyebrow/>
+<Eyelash/>
+<Mirror/>
+<Municure/>
 
         </>
     )

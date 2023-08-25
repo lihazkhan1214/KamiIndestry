@@ -1,13 +1,24 @@
 "use client"
-import React, { useState } from 'react';
-import Productdetailslider from '@/components/ProductdetailSlider';
+import React, { useState, useEffect } from 'react';
 import FeaturedCard from '@/components/FeaturedCard';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import { dividerClasses } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { Category } from '@mui/icons-material';
+interface FetchedProduct {
+    _id: string;
+    name: string;
+    price: number;
+    description: string;
+    images: { url: string }[];// Update this to the actual type of images if needed
+    ratings: number;
+    category: string  // Update this to the actual type of ratings if needed
+}
+
 const descpara = [
     {
         title: "The Right Choice:",
@@ -30,9 +41,22 @@ const descpara = [
     }
 ]
 
-function Productid() {
+
+
+
+function Productid({ params }: { params: { id: string } }) {
+    const id = params.id;
+
+    const router = useRouter();
+
+
+
+
     const [count, setcount] = useState(1);
+    const [Index, setindex] = useState(0);
     const [changecmp, setchangecmp] = useState('desc');
+    const [product, setProduct] = useState<FetchedProduct | null>(null);
+    const [category, setcategory] = useState<FetchedProduct  []>([]);
     const changecompment = (arg: String) => {
 
         if (arg == "desc")
@@ -45,6 +69,30 @@ function Productid() {
     }
 
 
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                if (product === null) {  // Check if product is not fetched yet
+                    const response = await fetch(`http://localhost:3000/api/products/${id}`);
+                    const jsonData = await response.json();
+                    setProduct(jsonData);
+                }
+
+                // Only fetch related products if category is available
+                if (product?.category) {
+                    const resp = await fetch(`http://localhost:3000/api/products?category=${product?.category}`);
+                    const jdata = await resp.json();
+                    setcategory(jdata);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        fetchData();
+    }, [id, product?.category]);
+    console.log("category", category);
+
     return (
         <>
             {/* this is bakgroundimage of procts */}
@@ -54,22 +102,50 @@ function Productid() {
 
             </div>
 
+
+
             <div className='padding-x py-10 '>
 
                 <div className='bg-[#FFF] gap-10 font-bold text-shadow py-5 padding-x flex flex-col  lg:flex-row  '>
 
                     <div className='flex-1 '>
+                        {
+                            product && (
+                                <div className='flex gap-5  items-center py-5'>
 
-                        <Productdetailslider />
+                                    <div className=" ">
+                                        {
+                                            product?.images?.map((img, ind) => (
+                                                <Image key={ind} src={img?.url} alt='not found' className='mb-3 cursor-pointer' onClick={() => setindex(ind)} width={100} height={100} />
+                                            ))
+                                        }
+
+                                    </div>
+                                    <div className=''>
+                                        <Image src={`${product?.images[Index]?.url}`} alt="" width={500} height={500} />
+
+
+
+
+                                    </div>
+
+
+                                </div>
+
+
+                            )
+                        }
+
+
 
 
                     </div>
                     <div className='flex-1 flex flex-col  py-5'>
                         <p className='descsmall text-[#242648] text-2xl mb-3 text-justify'>KAMI Beauty Professional Set Of Fiber Tip Eyelash Extensions Tweezers Japanese Steel Lash Supply</p>
 
-                        <span className='text-[#2697D3] mb-3 text-lg'>4.5$</span>
+                        <span className='text-[#2697D3] mb-3 text-lg'>{product?.price}$</span>
 
-                        <p className='global text-[#242648] text-shadow  text-justify mb-3'>The Aspire Beauty eyelash applicator tool is made with premium Japanese steel, which is extremely durable and corrosion-proof. The steel volume lash tweezers are covered in a high-grade finishing that makes them more resistant and easier to clean and disinfect.</p>
+                        <p className='global text-[#242648] text-shadow  text-justify mb-3'>{product?.description}</p>
 
                         <div className=' mb-3 flex gap-4  justify-between'>
                             <button className='rounded-lg w-full flex justify-between items-center border-2 text-[#181F36] py-4 p-6 border-[#242648] text-2xl'><RemoveIcon
@@ -145,17 +221,17 @@ function Productid() {
                             </div>
 
                             <form className='my-2 flex flex-col' action="">
-                            <textarea  className='my-2 py-2 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC] h-[120px]' name="" id=""  placeholder='Tour Review'></textarea>
-                            <input className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="text" placeholder='Name*' />
-                            
-                            <input className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="email" placeholder='Email*' />
+                                <textarea className='my-2 py-2 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC] h-[120px]' name="" id="" placeholder='Tour Review'></textarea>
+                                <input className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="text" placeholder='Name*' />
 
-                            <div className='flex items-center'>
-                            <input className='w-6 h-6  ' type="checkbox" />
-                            <label className='mx-2 globalpara text-[#1A1D3A]' htmlFor="">Save my name, email, and website in this browser for the next time I comment.</label>
+                                <input className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="email" placeholder='Email*' />
 
-                            </div>  
-                            <button className='my-2 py-6 px-4 bg-[#242648] text-lg font-bold text-[#FFF]'>Submit</button>
+                                <div className='flex items-center'>
+                                    <input className='w-6 h-6  ' type="checkbox" />
+                                    <label className='mx-2 globalpara text-[#1A1D3A]' htmlFor="">Save my name, email, and website in this browser for the next time I comment.</label>
+
+                                </div>
+                                <button className='my-2 py-6 px-4 bg-[#242648] text-lg font-bold text-[#FFF]'>Submit</button>
                             </form>
                         </div>
                 }
@@ -172,10 +248,19 @@ function Productid() {
                 <h1 className='globalHeading mb-3 text-[#242648]'>Related Items</h1>
 
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
+                   
+                     
+                               {category?.map((item)=>(
+                                <>
+                                <div className='mx-auto ' key={item._id}> 
+                                <FeaturedCard  name={item.name} images={item.images}  desc={item.description} ratings={item.ratings} id={item._id} price={item.price}/>
+                                </div>
+                                </>
+                               ))}  
 
-                    <div className='mx-auto '> <FeaturedCard /></div>
-                    <div className='mx-auto '> <FeaturedCard /></div>
-                    <div className='mx-auto '> <FeaturedCard /></div>
+                        
+                    
+
 
                 </div>
 
@@ -184,6 +269,9 @@ function Productid() {
 
 
             </div>
+
+
+
 
 
         </>

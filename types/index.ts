@@ -14,3 +14,16 @@ export interface CustomChoiseServices{
     img:String,
     desc:String
 };
+// export interface CustomProductProps{
+//     product:Object
+// };
+
+export interface ProductType {
+    id: string,
+    name:string,
+    desc?:string,
+    images: { url: string}[],
+    price: number,
+    ratings:number
+  };
+  
