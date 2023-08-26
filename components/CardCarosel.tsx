@@ -1,10 +1,13 @@
 "use client"
-import React,{useEffect,useState} from "react";
+import React,{useState} from "react";
 import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FeaturedCard from "./FeaturedCard";
+import { fetchData } from "@/app/apicalls/api";
+import useSWR from "swr";
+import Loading from "./Loading";
 
 
 
@@ -66,20 +69,15 @@ const SamplePrevArrow: React.FC<SampleArrowProps> = ({
 const CardCarousel: React.FC = () => {
   const [product, setProduct] = useState<FetchedProduct[]>([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(`http://localhost:3000/api/products?featured=${true}`);
-        const jsonData = await response.json();
-        setProduct(jsonData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
+  const { data, error } = useSWR<FetchedProduct []>(`http://localhost:3000/api/products?featured=${true}`, fetchData);
 
-    fetchData();
-  }, []);
+  if (error) return <div>Error loading data</div>;
+  if (!data) return <div className="flex justify-center items-center"><Loading/></div>;
 
+
+
+  
+  
  
   const settings = {
     dots: true,
@@ -131,7 +129,7 @@ const CardCarousel: React.FC = () => {
   return (
     <div className="px-10">
       <Slider {...settings}>
-        {product.map((item, ind) => (
+        {data.map((item,ind) => (
           <FeaturedCard
             name={item.name}
             price={item.price}
@@ -142,6 +140,8 @@ const CardCarousel: React.FC = () => {
             key={ind}
           />
         ))}
+        
+ 
       </Slider>
     </div>
   );

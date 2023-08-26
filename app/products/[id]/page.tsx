@@ -9,6 +9,10 @@ import StarIcon from '@mui/icons-material/Star';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Category } from '@mui/icons-material';
+import useSWR from "swr";
+import Loading from '@/components/Loading';
+import { fetchData } from '@/app/apicalls/api';
+
 interface FetchedProduct {
     _id: string;
     name: string;
@@ -55,8 +59,8 @@ function Productid({ params }: { params: { id: string } }) {
     const [count, setcount] = useState(1);
     const [Index, setindex] = useState(0);
     const [changecmp, setchangecmp] = useState('desc');
-    const [product, setProduct] = useState<FetchedProduct | null>(null);
-    const [category, setcategory] = useState<FetchedProduct  []>([]);
+    // const [product, setProduct] = useState<FetchedProduct | null>(null);
+    // const [category, setcategory] = useState<  []>([]);
     const changecompment = (arg: String) => {
 
         if (arg == "desc")
@@ -69,29 +73,23 @@ function Productid({ params }: { params: { id: string } }) {
     }
 
 
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                if (product === null) {  // Check if product is not fetched yet
-                    const response = await fetch(`http://localhost:3000/api/products/${id}`);
-                    const jsonData = await response.json();
-                    setProduct(jsonData);
-                }
+    const { data: product, error: productError } = useSWR<FetchedProduct | null>(
+        `http://localhost:3000/api/products/${id}`,
+        fetchData
+    );
 
-                // Only fetch related products if category is available
-                if (product?.category) {
-                    const resp = await fetch(`http://localhost:3000/api/products?category=${product?.category}`);
-                    const jdata = await resp.json();
-                    setcategory(jdata);
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
+    const { data: category, error: categoryError } = useSWR<FetchedProduct[]>(
+        `http://localhost:3000/api/products?category=${product?.category}`,
+        fetchData
+    );
 
-        fetchData();
-    }, [id, product?.category]);
-    console.log("category", category);
+    if (productError || categoryError) return <div>Error loading data</div>;
+    if (!product || !category)
+        return <div className="flex justify-center items-center"><Loading /></div>;
+
+
+
+
 
     return (
         <>
@@ -248,18 +246,18 @@ function Productid({ params }: { params: { id: string } }) {
                 <h1 className='globalHeading mb-3 text-[#242648]'>Related Items</h1>
 
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
-                   
-                     
-                               {category?.map((item)=>(
-                                <>
-                                <div className='mx-auto ' key={item._id}> 
-                                <FeaturedCard  name={item.name} images={item.images}  desc={item.description} ratings={item.ratings} id={item._id} price={item.price}/>
-                                </div>
-                                </>
-                               ))}  
 
-                        
-                    
+
+                    {category?.map((item) => (
+                        <>
+                            <div className='mx-auto ' key={item._id}>
+                                <FeaturedCard name={item.name} images={item.images} desc={item.description} ratings={item.ratings} id={item._id} price={item.price} />
+                            </div>
+                        </>
+                    ))}
+
+
+
 
 
                 </div>
