@@ -11,7 +11,7 @@ import Image from 'next/image';
 import { Category } from '@mui/icons-material';
 import useSWR from "swr";
 import Loading from '@/components/Loading';
-import { fetchData } from '@/app/apicalls/api';
+import { fetchData } from '@/apicalls/api';
 
 interface FetchedProduct {
     _id: string;

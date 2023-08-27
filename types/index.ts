@@ -25,5 +25,6 @@ export interface ProductType {
     images: { url: string}[],
     price: number,
     ratings:number
+    stock:number
   };
   

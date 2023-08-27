@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FeaturedCard from "./FeaturedCard";
-import { fetchData } from "@/app/apicalls/api";
+import { fetchData } from "@/apicalls/api";
 import useSWR from "swr";
 import Loading from "./Loading";
 
@@ -15,6 +15,7 @@ interface FetchedProduct {
   _id: string;
   name: string;
   price: number;
+  stock:number
   description: string;
   images: { url: string}[];// Update this to the actual type of images if needed
   ratings: number; // Update this to the actual type of ratings if needed
@@ -137,6 +138,7 @@ const CardCarousel: React.FC = () => {
             desc={item.description}
             images={item.images}
             ratings={item.ratings}
+            stock={item.stock}
             key={ind}
           />
         ))}

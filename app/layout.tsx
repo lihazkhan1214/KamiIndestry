@@ -1,7 +1,9 @@
+
 import './globals.css'
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import Footer from '@/components/Footer';
+import { Providers } from './Provider';
 
 export const metadata: Metadata = {
   title: 'WebCollect',
@@ -16,9 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className='bgcolor'>
+    
+      <Providers>
         <Navbar/>
         {children}
         <Footer/>
+        </Providers>
+       
         </body>
     </html>
   )

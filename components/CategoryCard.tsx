@@ -1,54 +1,63 @@
 import React from 'react';
 import Image from 'next/image';
-import StarIcon from '@mui/icons-material/Star';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import StarRatings from "react-star-ratings";
+import { ProductType } from '@/types';
 
-function CategoryCard() {
+
+
+function CategoryCard({ name, images, price, desc, id, ratings }: ProductType) {
   const router = useRouter()
+
   return (
     <>
       <div
-        className="block   shadow-xs sm:shadow-md md:shadow-lg lg:shadow-xl  border-[1px]  border-[#B0B0B0]     mx-2 rounded-lg bg-[#FFF]">
-      
+        className="block   shadow-xs sm:shadow-md md:shadow-lg lg:shadow-xl  border-[1px]  border-[#B0B0B0]  rounded-lg bg-[#FFF]">
+
+        <div className='h-[200px] w-[100%] relative'>
           <Image
-            className="rounded-t-lg cursor-pointer"
-            src="/gallery2.png"
+            className="rounded-t-lg relative cursor-pointer"
+            src={images ? images[0]?.url : "/gallery2.png"}
             alt=""
-            width={800}
-            height={200}
-            onClick={()=>router.push('/product/123')}
+            fill={true}
+            onClick={() => router.push(`/products/${id}`)}
           />
-        
+
+        </div>
 
 
 
         <div className="p-6">
-          <div  className='cursor-pointer' onClick={()=>router.push('/product/123')}>
+          <div className='cursor-pointer' onClick={() => router.push(`/products/${id}`)}>
             <div className='flex justify-between cursor-pointer1'>
 
               <h5 className='cardheading'>
-                Tweezer
+                {name}
               </h5>
-              <div className=" mb-3 flex justify-center items-center">
-                <StarIcon style={{ color: "#FBA122" }} />
-                <StarIcon style={{ color: "#FBA122" }} />
-                <StarIcon style={{ color: "#FBA122" }} />
-                <StarIcon style={{ color: "#FBA122" }} />
-                <StarIcon style={{ color: "#FBA122" }} />
+              <StarRatings
+                rating={ratings}
+                starRatedColor="#ffb829"
+                numberOfStars={5}
+                starDimension="20px"
+                starSpacing="2px"
+                name="rating"
+              />
 
-              </div>
             </div>
-            <p className='flex justify-between'>
-              <span className='text-lg font-medium text-[#292929]'>Price:</span><span>$4.5</span>
-            </p>
+            <div className=" mb-3 py-2 flex justify-between items-center">
+            <span className='text-[#292929]'>
+               Price:
+              </span>
+              <span className='text-[#292929]'>
+                ${price}
+              </span>
 
+            </div>
             <p className=' mb-4 text-justify text-sm text-[#424242]'>
-              KAMI EYELASH for Volume Fans Professional Precision Stainless Steel Non-Slip Tip Eyelash Tweezers Curved Lash Extensions Tweezers Eyelash Extension Tools by GEMERRY</p>
+              {desc?.substring(0, 150)}...</p>
           </div>
-
-
-          <button className='w-full bg-[#1D1D1D] border-2 py-2 font-bold text-[#FFF]' onClick={() => router.push('/cart')} >
+          <button className='w-full  border-[#1D1D1D] rounded-[2px] border-[1px] py-2 font-bold text-[#2D2C40]' onClick={() => router.push('/cart')} >
             Add Cart
 
           </button>
@@ -66,4 +75,4 @@ function CategoryCard() {
   )
 }
 
-export default CategoryCard
+export default CategoryCard;

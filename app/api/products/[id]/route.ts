@@ -42,7 +42,7 @@ export const PUT = async (
 ) => {
     const { id } = params;
     const body=await req.json();
-    await connect();
+    await connect();    
 
     try {
         const product = await Product.findByIdAndUpdate(id,body,{new:true})

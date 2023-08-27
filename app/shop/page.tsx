@@ -1,10 +1,14 @@
 "use client"
 import React, { useState } from 'react';
+import useSWR from "swr";
+import { fetchData } from '@/apicalls/api';
+import Loading from '@/components/Loading';
 import Link from 'next/link';
 import Eyebrow from '@/components/Eyebrow';
 import Eyelash from '@/components/Eyelash';
 import Mirror from '@/components/Mirror';
 import Municure from '@/components/Municure';
+
 
 const Links = [
     {
@@ -26,6 +30,15 @@ const Links = [
     }
 ];
 
+interface FetchedProduct {
+    _id: string;
+    name: string;
+    price: number;
+    description: string;
+    images: { url: string }[];// Update this to the actual type of images if needed
+    ratings: number;
+    category: string  // Update this to the actual type of ratings if needed
+}
 
 function Shop() {
     const [Ct, setCt] = useState('eyebrow');
@@ -40,7 +53,19 @@ function Shop() {
             else
             setCt('municure')
     }
+    const { data, error } = useSWR<FetchedProduct []>(
+        'http://localhost:3000/api/products',
+        fetchData
+    );
 
+    if (error) return <div>Error loading data</div>;
+    if (!data)
+        return <div className="flex justify-center items-center"><Loading /></div>;
+
+        const EyebrowProducts = data.filter((product) => product.category === "Eyebrow");
+        const EyelashProducts = data.filter((product) => product.category === "Eyelash");
+        const MirrorProducts = data.filter((product) => product.category === "Mirror");
+        const MunicureProducts = data.filter((product) => product.category === "Municure");
 
     return (
         <>
@@ -62,11 +87,20 @@ function Shop() {
             </div>
 
         </div >
+
+
+
+
+
+
+
            
-<Eyebrow/>
-<Eyelash/>
-<Mirror/>
-<Municure/>
+<Eyebrow eyebrow={EyebrowProducts}/>
+<Eyelash eyelash={EyelashProducts}/>
+<Mirror mirror={MirrorProducts}/>
+<Municure municure={MunicureProducts} />
+
+
 
         </>
     )

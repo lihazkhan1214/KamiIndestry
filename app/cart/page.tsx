@@ -1,9 +1,13 @@
 "use client"
+import { useCallback } from 'react';
 import React from 'react';
 import Image from 'next/image';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-const carts = [1, 2, 3];
+import { useSelector } from 'react-redux';
+import { selectCart,increaseQuantity, decreaseQuantity } from '@/redux/cartSlice';
+import { useDispatch } from 'react-redux';
+
 const forminputs = [
     {
         label: "FullName",
@@ -33,6 +37,31 @@ const forminputs = [
 ];
 
 function Cart() {
+    const cart=useSelector(selectCart);
+    const dispatch=useDispatch();
+    console.log("cart",cart);
+    if(!cart.products || !cart.quantity|| !cart.total){
+        return <h1>Cart is Empty</h1>
+    }
+    const {products,quantity,total}=cart;
+
+
+    const handleIncreaseQuantity = useCallback(
+        (id: string) => {
+          dispatch(increaseQuantity(id));
+        },
+        [dispatch]
+      );
+      
+      const handleDecreaseQuantity = useCallback(
+        (id: string) => {
+          dispatch(decreaseQuantity(id));
+        },
+        [dispatch]
+      );
+      
+
+
     return (
         <>
             {/* this is cart background image */}
@@ -72,21 +101,21 @@ function Cart() {
                             </thead>
                             <tbody>
                                 {
-                                    carts.map((item, ind) => (
+                                    products.map((item, ind) => (
                                         <tr className='border-b-2 border-[#242648]' key={ind}>
                                             <td className=' p-5 flex flex-col lg:flex-row items-center gap-2'>
-                                                <Image src='/productdt1.png' alt='not found' width={100} height={100} />
-                                                <div className='text-sm  font-semibold '>Eyelash Mirror</div>
+                                                <Image src={item?.img} alt='not found' width={100} height={100} />
+                                                <div className='text-sm  font-semibold '>{item?.name}</div>
 
                                             </td>
 
-                                            <td className='text-sm  font-semibold text-center'>10$</td>
+                                            <td className='text-sm  font-semibold text-center'>{item.price}$</td>
                                             <td className='text-sm   text-center font-semibold'>
-                                                <button className='text-[#242648] border-2 border-[#242648] rounded-lg px-6 py-4 flex flex-nowrap text-center gap-2'> <RemoveIcon className='mx-2' />2<AddIcon className='mx-2' /></button>
+                                                <button className='text-[#242648] border-2 border-[#242648] rounded-lg px-6 py-4 flex flex-nowrap text-center gap-2'> <RemoveIcon  onClick={handleDecreaseQuantity(item?.id)} className='mx-2' />{item?.quantity}<AddIcon onClick={handleIncreaseQuantity(item?.id)} className='mx-2' /></button>
 
                                             </td>
-                                            <td className='text-sm text-center  font-semibold whitespace-nowrap'>In Stock</td>
-                                            <td className='text-sm text-center  font-semibold'>$20</td>
+                                            <td className='text-sm text-center  font-semibold whitespace-nowrap'>{item?.stock}</td>
+                                            <td className='text-sm text-center  font-semibold'>${item?.price*item?.quantity}</td>
                                             <td className='text-sm text-center  font-semibold'><button className='bg-[#242648] text-[#FFF] rounded-lg px-11 py-4'>Remove</button></td>
 
                                         </tr>
@@ -125,16 +154,16 @@ function Cart() {
                             <h1 className='text-[#181F36] text-xl font-bold'>Order Details:</h1>
                             <div className='flex justify-between my-3'>
 
-                                <div className='text-[#181F36] text-lg font-normal'>3Items</div>
-                                <div className='text-[#181F36] text-lg font-normal'>$30</div>
+                                <div className='text-[#181F36] text-lg font-normal'>{quantity}Items</div>
+                                <div className='text-[#181F36] text-lg font-normal'>${total}</div>
                             </div>
                             <div className='flex justify-between my-3'>
 
-                                <div className='text-[#181F36] text-lg font-normal'>Delivery Fee</div><div className='text-[#181F36] text-lg font-normal'>$10</div>
+                                <div className='text-[#181F36] text-lg font-normal'>Delivery Fee </div><div className='text-[#181F36] text-lg font-normal'>$0</div>
                             </div>
                             <div className='flex justify-between my-3'>
 
-                                <div className='text-[#181F36] text-xl font-bold'>Sub Total</div><div className='text-[#181F36] text-xl font-bold'>$10</div>
+                                <div className='text-[#181F36] text-xl font-bold'>Sub Total</div><div className='text-[#181F36] text-xl font-bold'>${total}</div>
                             </div>
                             <button className=' w-full text-[rgb(255,255,255)] text-2xl font-normal text-center mb-3 p-4 rounded-md border-2  bg-[#242648]'>Add Payment</button>
                             <button className=' w-full text-[#242648] text-2xl font-normal text-center mb-3 p-4 rounded-md border-2  border-[#242648]'>Cancel</button>
