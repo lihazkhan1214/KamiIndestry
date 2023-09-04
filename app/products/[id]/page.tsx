@@ -106,6 +106,11 @@ function Productid({ params }: { params: { id: string } }) {
             dispatch(addProduct(productToAdd));
           };
 
+        //   const handleReview = (e: React.MouseEvent<HTMLButtonElement>) => {
+        //     e.preventDefault();
+        //     alert("You can give a review after payment");
+        //   }
+          
 
 
     return (
@@ -237,16 +242,16 @@ function Productid({ params }: { params: { id: string } }) {
 
                             <form className='my-2 flex flex-col' action="">
                                 <textarea className='my-2 py-2 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC] h-[120px]' name="" id="" placeholder='Tour Review'></textarea>
-                                <input className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="text" placeholder='Name*' />
+                                <input required className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="text" placeholder='Name*' />
 
                                 <input className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="email" placeholder='Email*' />
 
                                 <div className='flex items-center'>
-                                    <input className='w-6 h-6  ' type="checkbox" />
+                                    <input className='w-6 h-6  ' required type="checkbox" />
                                     <label className='mx-2 globalpara text-[#1A1D3A]' htmlFor="">Save my name, email, and website in this browser for the next time I comment.</label>
 
                                 </div>
-                                <button className='my-2 py-6 px-4 bg-[#242648] text-lg font-bold text-[#FFF]'>Submit</button>
+                                <button typeof='submit' className='my-2 py-6 px-4 bg-[#242648] text-lg font-bold text-[#FFF]' onClick={()=>alert("you can review after payment")}>Submit</button>
                             </form>
                         </div>
                 }

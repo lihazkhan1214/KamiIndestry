@@ -23,7 +23,7 @@ const info = [
 ];
 
 function Contact() {
-    console.log("api key",process.env.API_URL)
+  
     return (
         <>
             {/* this si contact us background image */}

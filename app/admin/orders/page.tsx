@@ -1,5 +1,5 @@
 "use client"
-
+import { useEffect } from 'react';
 import OrderTable from '@/components/OrderTable'
 import Sidebar from '@/components/Siderbar'
 import React from 'react';
@@ -7,17 +7,17 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import AddButtton from '@/components/AddButtton';
 
-function page() {
-  const router=useRouter();
-  const session=useSession();
-  console.log("ooorrdr",session);
-  const {data}=session;
+function Order() {
+  const router = useRouter();
+  const session = useSession();
+  console.log("ooorrdr", session);
+  const { data } = session;
 
-
-
-  if ((data?.user?.role !== "admin")) {
-    router.push('/admin/login');
-  }
+  useEffect(() => {
+    if (data?.user?.role !== "admin") {
+      router.push('/admin/login');
+    }
+  }, [data, router]);
   
   return (
     <>
@@ -60,4 +60,4 @@ function page() {
   )
 }
 
-export default page
+export default Order

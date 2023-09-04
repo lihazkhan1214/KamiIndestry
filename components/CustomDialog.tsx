@@ -14,9 +14,6 @@ interface DialogProps {
 }
 
 const CustomDialog: React.FC<DialogProps> = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-
- 
   const [name, setName] = useState<string>("");
   const [description, setDesc] = useState<string>("");
   const [heading, setheading] = useState<string>("");
@@ -24,25 +21,21 @@ const CustomDialog: React.FC<DialogProps> = ({ isOpen, onClose }) => {
   const [stock, setstock] = useState<number>(0);
   const [category, setCategory] = useState<string>("Eyelash");
   const [featured, setFeatured] = useState<boolean>(false);
-  const [images, setImages] = useState<{ url: string;}[]>([])
+  const [images, setImages] = useState<{ url: string; }[]>([]);
   console.log(images);
-
- 
 
   const handleDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setDesc(e.target.value);
   };
 
-
   const handleHeadingChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setheading(e.target.value);
   };
-  
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-  
-    try {
 
+    try {
       const res = await fetch(`${process.env.API_URL}/api/products`, {
         method: "POST",
         body: JSON.stringify({
@@ -54,28 +47,21 @@ const CustomDialog: React.FC<DialogProps> = ({ isOpen, onClose }) => {
           featured,
           images,
           stock
-
-          
-        
         }),
       });
 
-      // const data = await res.json();
-      if(res.status===201){
-        console.log("responsive ok")
+      if (res.status === 201) {
+        console.log("responsive ok");
         onClose();
-       
+      } else {
+        console.log("error");
       }
-      else{
-        console.log("erorr")
-      }
-    
-       
     } catch (error) {
       console.error("Error:", error);
     }
   };
-  
+
+  if (!isOpen) return null;
 
 
 

@@ -1,12 +1,8 @@
 "use client"
-
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
 import Loading from './Loading';
-
-
-
 
 interface Item {
   _id: string;
@@ -16,71 +12,48 @@ interface Item {
   createdAt: string;
   total: number;
   status: string;
-  // Add more properties here
 }
-  
-
-    
-
- 
-//   // Add more dummy items here
-// ];
 
 const itemsPerPage = 5; // Number of items to display per page
 
 const OrderTable: React.FC = () => {
-  const [data, setdata] = useState<Item[]>([]); // Specify the type for data
-  const [error, seterror] = useState<boolean>(false); // Specify the type for error
+  const [data, setdata] = useState<Item[]>([]);
+  const [error, seterror] = useState<boolean>(false);
   const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleStatusChange = (status: string | null) => {
     setSelectedStatus(status);
   };
 
-  // Filter the data based on the selected status
-  const filteredData = selectedStatus
-    ? data.filter((item) => item.status === selectedStatus)
-    : data;
-
-
-
-
-
-
-
   useEffect(() => {
-  const GetData = async () => {
-    try {
-      const res = await axios.get<Item[]>(`${process.env.API_URL}/api/order`); // Specify the expected response type
-      if (res) {
-        setdata(res.data);
-      } else {
+    const GetData = async () => {
+      try {
+        const res = await axios.get<Item[]>(`${process.env.API_URL}/api/order`);
+        if (res) {
+          setdata(res.data);
+        } else {
+          seterror(true);
+        }
+      } catch (error) {
         seterror(true);
       }
-    } catch (error) {
-      seterror(true);
-    }
-  };
+    };
 
-  GetData();
-}, []);
+    GetData();
+  }, []);
 
-if (!data) {
-  return (
-    <div className='mx-auto'>
-      <Loading />
-    </div>
-  );
-}
+  if (!data) {
+    return (
+      <div className='mx-auto'>
+        <Loading />
+      </div>
+    );
+  }
 
-if (error) {
-  return <div>Error loading data</div>;
-}
-
-
-
-
-  const [currentPage, setCurrentPage] = useState(1);
+  if (error) {
+    return <div>Error loading data</div>;
+  }
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
@@ -101,43 +74,31 @@ if (error) {
         <table className="min-w-full">
           <thead>
             <tr className='border-b-2 border-[#D3D3D3]'>
-            <th className="text-center text-sm text-[#333237]">OrderID</th>
+              <th className="text-center text-sm text-[#333237]">OrderID</th>
               <th className="text-center text-sm text-[#333237]">Customer</th>
               <th className="text-center text-sm text-[#333237]">Adress</th>
               <th className="text-center text-sm text-[#333237]">Phone</th>
               <th className="text-center text-sm text-[#333237]">Date</th>
-            
-             
               <th className="text-center text-sm text-[#333237]">Payment</th>
               <th className="text-center text-sm text-[#333237]">Status</th>
-              
             </tr>
           </thead>
           <tbody>
             {displayedItems.map((item) => (
-              <tr key={item._id}  className="border-b-2 border-[#D3D3D3]  hover:bg-gray-100">
-                <td  className="text-center text-sm py-4  text-[#333237]">{item._id}</td>
-                <td  className="text-center text-sm  text-[#333237]">{item.customer}</td>
-                <td  className="text-center text-sm  text-[#333237]" >{item.address}</td>
-                <td  className="text-center text-sm  text-[#333237]">{item.phone}</td>
-                <td  className="text-center text-sm  text-[#333237]">{item.createdAt}</td>
-               
-                <td  className="text-center text-sm  text-[#333237]">{item.total}</td>
-                <td  className="text-center text-sm  text-[#333237]">
-
-                       <select name="" id="">
-
-                        <option value="Preparing">Preparing</option>
-                        <option value="On the Way">on The Way</option>
-                        <option value="Deliverd">Delivered</option>
-                       </select>
-
+              <tr key={item._id} className="border-b-2 border-[#D3D3D3]  hover:bg-gray-100">
+                <td className="text-center text-sm py-4 text-[#333237]">{item._id}</td>
+                <td className="text-center text-sm text-[#333237]">{item.customer}</td>
+                <td className="text-center text-sm text-[#333237]">{item.address}</td>
+                <td className="text-center text-sm text-[#333237]">{item.phone}</td>
+                <td className="text-center text-sm text-[#333237]">{item.createdAt}</td>
+                <td className="text-center text-sm text-[#333237]">{item.total}</td>
+                <td className="text-center text-sm text-[#333237]">
+                  <select name="" id="">
+                    <option value="Preparing">Preparing</option>
+                    <option value="On the Way">on The Way</option>
+                    <option value="Delivered">Delivered</option>
+                  </select>
                 </td>
-               
-              
-             
-              
-                {/* Add more table cells here */}
               </tr>
             ))}
           </tbody>
@@ -146,7 +107,7 @@ if (error) {
       <div className="flex items-center justify-center mt-6">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
-         className='mx-2'
+          className='mx-2'
           disabled={currentPage === 1}
         >
           <Image src="/arrowleft.png" alt='not found' width={30} height={30} />
@@ -156,7 +117,7 @@ if (error) {
           className='mx-2'
           disabled={currentPage === totalPages}
         >
-           <Image src="/arrowright.png" alt='not found' width={30} height={30} />
+          <Image src="/arrowright.png" alt='not found' width={30} height={30} />
         </button>
       </div>
     </div>

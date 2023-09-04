@@ -6,31 +6,34 @@ import { useRouter } from 'next/navigation';
 interface InputItem {
     name: string;
     type: string;
+    label:string;
     placeholder: string;
 }
 
 const Inputs: InputItem[] = [
     {
+        label:"Username",
         name: "username",
         type: "text",
         placeholder: "Enter your Username"
     },
     {
+        label:"Email",
         name: "email",
         type: "email",
         placeholder: "Enter your Email"
     },
-    {
+    {  label:"Mobile",
         name: "mobile",
         type: "number",
         placeholder: "Enter your Number"
     },
-    {
+    {  label:"Password",
         name: "password",
         type: "password",
         placeholder: "Enter your Password"
     },
-    {
+    {  label:"Confirm Password",
         name: "cpassword",
         type: "password",
         placeholder: "Enter your Confirm Password"
@@ -94,7 +97,7 @@ const Inputs: InputItem[] = [
                     }} className='mt-5 flex flex-col gap-5' action="">
                         {Inputs.map((item, ind) => (
                             <div key={ind}>
-                                <label className='text-[#1C1F30] block font-bold  text-xl' htmlFor={item.name}>{item.name} :</label>
+                                <label className='text-[#1C1F30] block font-bold  text-xl' htmlFor={item.name}>{item.label} :</label>
                                 <input
                                     className='w-full rounded-lg py-3 px-6 border-2 placeholder:text-[#A3A3A3] border-[#1C1F30]'
                                     type={item.type}

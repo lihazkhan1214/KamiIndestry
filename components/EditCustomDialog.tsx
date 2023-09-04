@@ -30,18 +30,14 @@ interface FetchedProduct {
   }
 
 const EditCustomDialog: React.FC<DialogProps> = ({ isOpen, onClose,id }) => {
-  if (!isOpen) {
-    return null;
-  }
-const router=useRouter();
+  const router = useRouter();
   const [data, setData] = useState<FetchedProduct | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
   const [name, setName] = useState<string>("");
   const [description, setDesc] = useState<string>("");
-  const [price, setPrice] = useState<number>(); // Initialize with default values
-  const [stock, setStock] = useState<number>(); // Initialize with default values
+  const [price, setPrice] = useState<number | undefined>(undefined);
+  const [stock, setStock] = useState<number | undefined>(undefined);
   const [category, setCategory] = useState<string>("");
   const [featured, setFeatured] = useState<boolean>(false);
   const [images, setImages] = useState<{ url: string }[]>([]);
@@ -76,23 +72,14 @@ const router=useRouter();
     }
   }, [data]);
 
-
-
-
-
- 
-
   const handleDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setDesc(e.target.value);
   };
 
-
-  
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-  
-    try {
 
+    try {
       const res = await fetch(`${process.env.API_URL}/api/products/${id}`, {
         method: "PUT",
         body: JSON.stringify({
@@ -103,32 +90,27 @@ const router=useRouter();
           featured,
           images,
           stock
-
-          
-        
         }),
       });
 
-      // const data = await res.json();
-      if(res.status===201){
-        console.log("responsive ok")
+      if (res.status === 201) {
+        console.log("responsive ok");
         const newData = { ...data, name, description, price, category, featured, images, stock };
-
-      // Use the mutate function to revalidate and update the data
-      mutate(`${process.env.API_URL}/api/products/${id}`, newData, false);
-   alert("data has been updated")
+        // Use the mutate function to revalidate and update the data
+        mutate(`${process.env.API_URL}/api/products/${id}`, newData, false);
+        alert("Data has been updated");
         onClose();
-       
+      } else {
+        console.log("error");
       }
-      else{
-        console.log("erorr")
-      }
-    
-       
     } catch (error) {
       console.error("Error:", error);
     }
   };
+
+  if (!isOpen) {
+    return null;
+  }
   
 
 

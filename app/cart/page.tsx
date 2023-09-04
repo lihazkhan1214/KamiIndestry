@@ -68,10 +68,10 @@ function Cart() {
 
     });
 
-    console.log("orderob", orderob)
+  
 
 
-
+    const style = {"layout":"vertical"};
     const { products, quantity, total } = cart;
     const amount = total;
     const currency = "usd"
@@ -97,11 +97,11 @@ function Cart() {
 
     const handleopen = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        if(session.status==='authenticated'){
+        if (session.status === 'authenticated') {
             setopen(true);
         }
-        else{
-             router.push('/login')
+        else {
+            router.push('/login')
         }
         setopen(true)
     }
@@ -111,105 +111,73 @@ function Cart() {
 
 
 
-    const createOrder = async () => {
-        // Create your order object based on cart data
+    function createOrder() {
+        // replace this url with your server
+        return fetch("https://react-paypal-js-storybook.fly.dev/api/paypal/create-order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            // use the "body" param to optionally pass additional order information
+            // like product ids and quantities
+            body: JSON.stringify({
+                cart: [
+                    {
+                        sku: "1blwyeo8",
+                        quantity: 2,
+                    },
+                ],
+            }),
+        })
+            .then((response) => response.json())
+            .then((order) => {
+                // Your code here after create the order
+                return order.id;
+            });
+    }
 
 
-        try {
-            const res = await fetch(`${process.env.API_URL}/api/order`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    customer: orderob.customer,
-                    address: orderob.address,
-                    phone: orderob.phone,
-                    total: total,
-                    country: orderob.country,
-                    postalcode: orderob.postalcode
-                }), // Send the orders array
+
+
+    function onApprove() {
+        // replace this url with your server
+        return fetch("https://react-paypal-js-storybook.fly.dev/api/paypal/capture-order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                orderID: "khan",
+            }),
+        })
+            .then((response) => response.json())
+            .then((orderData) => {
+                // Your code here after capture the order
             });
 
-            if (res.status === 201) {
-                dispatch(reset());
-                router.push('/');
-            } else {
-                console.log('error');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
-
-
-
-
-
-    const ButtonWrapper = ({ currency, showSpinner }: { currency: string; showSpinner: boolean }) => {
-        // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
-        // This is the main reason to wrap the PayPalButtons in a new component
-
-        // const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-
-
-        // useEffect(() => {
-        //   dispatch({
-        //     type: "resetOptions",
-        //     value: {
-        //       ...options,
-        //       currency: currency,
-        //     },
-        //   });
-        // }, [currency, showSpinner]);
-        const [{ isPending }] = usePayPalScriptReducer();
-
-
-        return (<>
-            {(showSpinner && isPending) && <div className="spinner" />}
-            <PayPalButtons
-                style={{ "layout": "vertical" }}
-                disabled={undefined}
-                forceReRender={[amount, currency]}
-                fundingSource={undefined}
-                createOrder={(data, actions) => {
-                    return actions.order
-                        .create({
-                            purchase_units: [
-                                {
-                                    amount: {
-                                        currency_code: currency,
-                                        value: `${amount}`
-                                    },
-                                },
-                            ],
-                        })
-                        .then((orderId) => {
-                            // Your code here after create the order
-                            return orderId;
-                        });
-                }}
-                onApprove={function (data, actions) {
-                    return actions?.order?.capture().then(function (details) {
-                        const shipping = details.purchase_units[0]?.shipping;
-                        // console.log(shipping)
-                        if (shipping) {
-                            createOrder();
-                        }
-
-
-
-
-
-                    });
-                }}
-            />
-        </>
-        );
     }
 
 
 
 
 
-
+    const ButtonWrapper = ({ showSpinner }: { showSpinner: boolean }) => {
+        const [{ isPending }] = usePayPalScriptReducer();
+    
+        return (
+            <>
+                { (showSpinner && isPending) && <div className="spinner" /> }
+                <PayPalButtons
+                    
+                    disabled={false}
+                    forceReRender={undefined}
+                    fundingSource={undefined}
+                    createOrder={createOrder}
+                    onApprove={onApprove}
+                />
+            </>
+        );
+    }
 
 
     return (
@@ -318,12 +286,20 @@ function Cart() {
                                         <div className='text-[#181F36] text-xl font-bold'>Sub Total</div><div className='text-[#181F36] text-xl font-bold'>${total.toFixed(2)}</div>
                                     </div>
                                     {
-                                        open ? (<PayPalScriptProvider options={{ clientId: "AdwMgmJUSf25uNE7s_RJJ9iLz5C7IAszOI_Kn1A7rs3mpcbzr4Vd664c9WidrgnnuzzwYF9Y0WHZvJbj", components: "buttons", currency: "USD", disableFunding: ['credit', 'card', 'p24', 'venmo'], }}>
+                                        open ? (
+                                        
+                                        <PayPalScriptProvider options={{ clientId: "AdwMgmJUSf25uNE7s_RJJ9iLz5C7IAszOI_Kn1A7rs3mpcbzr4Vd664c9WidrgnnuzzwYF9Y0WHZvJbj", components: "buttons", currency: "USD", disableFunding: ['credit', 'card', 'p24', 'venmo'], }}>
                                             <ButtonWrapper showSpinner={false}
 
 
                                             />
-                                        </PayPalScriptProvider>) : (
+                                        </PayPalScriptProvider>
+
+
+
+
+
+                                        ) : (
                                             <button type='submit' className=' w-full text-[rgb(255,255,255)] text-2xl font-normal text-center mb-3 p-4 rounded-md border-2  bg-[#242648]'>Add Payment</button>
                                         )
                                     }

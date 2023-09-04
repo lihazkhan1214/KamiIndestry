@@ -7,7 +7,7 @@ import { Providers } from './Provider';
 import AuthProvider from '@/components/AuthProvider/AuthProvider';
 
 export const metadata: Metadata = {
-  title: 'WebCollect',
+  title: 'kamiindustries',
   description: 'Created by Lihaz Khan',
 }
 

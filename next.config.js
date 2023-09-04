@@ -8,7 +8,7 @@ const nextConfig = {
    env:{
     dburl: 'mongodb+srv://welldatabase:lihaz1212@cluster0.qva8alg.mongodb.net/Kami?retryWrites=true&w=majority',
     NEXTAUTH_SECRET: "codingwithlihaz",
-    API_URL:"http://localhost:3000"
+    API_URL:"http://shop.kamiindustries.com"
     
    }
 
