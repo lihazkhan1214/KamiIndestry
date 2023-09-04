@@ -78,14 +78,56 @@ function Productid({ params }: { params: { id: string } }) {
 
 
     const { data: product, error: productError } = useSWR<FetchedProduct | null>(
-        `/api/products/${id}`,
+        `${process.env.API_URL}/api/products/${id}`,
         fetchData
     );
 
     const { data: category, error: categoryError } = useSWR<FetchedProduct[]>(
-        `/api/products?category=${product?.category}`,
+        `${process.env.API_URL}/api/products?category=${product?.category}`,
         fetchData
     );
+
+    // async function fetchProduct(id: string): Promise<FetchedProduct | null> {
+    //     try {
+    //       const response = await fetch(`${process.env.API_URL}/api/products/${id}`);
+    //       if (!response.ok) {
+    //         throw new Error('Network response was not ok');
+    //       }
+    //       return await response.json();
+    //     } catch (error : any) {
+    //       throw new Error(`Failed to fetch product: ${error.message}`);
+    //     }
+    //   }
+      
+    //   async function fetchCategory(category: string): Promise<FetchedProduct[]> {
+    //     try {
+    //       const response = await fetch(`${process.env.API_URL}/api/products?category=${category}`);
+    //       if (!response.ok) {
+    //         throw new Error('Network response was not ok');
+    //       }
+    //       return await response.json();
+    //     } catch (error: any) {
+    //       throw new Error(`Failed to fetch category: ${error.message}`);
+    //     }
+    //   }
+      
+    //   // Usage:
+    //   // Replace with the desired product ID
+    //   const fetchData = async (): Promise<{ product: FetchedProduct | null; category: FetchedProduct[] | null }> => {
+    //     try {
+    //       const product = await fetchProduct(id);
+    //       const category = await fetchCategory(product?.category || ''); // Use an empty string as a fallback if category is undefined
+    //       return { product, category };
+    //     } catch (error) {
+    //       // Handle errors here
+    //       console.error(error);
+    //       return { product: null, category: null };
+    //     }
+    //   };
+      
+    //  const data = await fetchData();
+
+     
 
     if (productError || categoryError) return <div>Error loading data</div>;
     if (!product || !category)

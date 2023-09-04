@@ -1,5 +1,5 @@
 "use client"
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -69,12 +69,36 @@ const SamplePrevArrow: React.FC<SampleArrowProps> = ({
 // ...
 
 const CardCarousel: React.FC = () => {
-  const [product, setProduct] = useState<FetchedProduct[]>([]);
+  const [products, setProducts] = useState<FetchedProduct[] | null>([]);
 
-  const { data, error } = useSWR<FetchedProduct []>(`${process.env.API_URL}/api/products?featured=${true}`, fetchData);
+  // const { data, error } = useSWR<FetchedProduct []>(`${process.env.API_URL}/api/products?featured=${true}`, fetchData);
 
+
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${process.env.API_URL}/api/products?featured=true`);
+        
+        if (!response.ok) {
+          throw new Error(`Fetch failed with status ${response.status}`);
+        }
+        
+        const result = await response.json();
+        setProducts(result);
+        setError(null);
+      } catch (err: any) {
+        setError(err);
+        setProducts(null);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
   if (error) return <div>Error loading data</div>;
-  if (!data) return <div className="flex justify-center items-center"><Loading/></div>;
+  if (!products) return <div className="flex justify-center items-center"><Loading/></div>;
 
 
 
@@ -126,12 +150,12 @@ const CardCarousel: React.FC = () => {
     ],
   };
 
-  console.log("products", product);
+  // console.log("products", product);
 
   return (
     <div className="px-10">
       <Slider {...settings}>
-        {data.map((item,ind) => (
+        {products.map((item,ind) => (
           <FeaturedCard
             name={item.name}
             price={item.price}
