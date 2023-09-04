@@ -45,7 +45,7 @@ const EditCustomDialog: React.FC<DialogProps> = ({ isOpen, onClose,id }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/products/${id}`);
+        const response = await axios.get(`${process.env.API_URL}/api/products/${id}`);
         setData(response.data);
         setLoading(false);
       } catch (err) {
