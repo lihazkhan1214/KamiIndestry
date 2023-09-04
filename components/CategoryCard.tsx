@@ -4,11 +4,28 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import StarRatings from "react-star-ratings";
 import { ProductType } from '@/types';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '@/redux/cartSlice';
 
 
 
-function CategoryCard({ name, images, price, desc, id, ratings }: ProductType) {
+function CategoryCard({ name, images, price, desc, id, ratings,stock }: ProductType) {
   const router = useRouter()
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+   
+    const productToAdd = {
+      id: id,
+      img: images ? images[0]?.url : "/gallery2.png", // Correct image path
+      name: name,
+      price: price,
+      quantity: 1,
+      stock: stock
+    };
+
+    dispatch(addProduct(productToAdd));
+  };
 
   return (
     <>
@@ -57,7 +74,7 @@ function CategoryCard({ name, images, price, desc, id, ratings }: ProductType) {
             <p className=' mb-4 text-justify text-sm text-[#424242]'>
               {desc?.substring(0, 150)}...</p>
           </div>
-          <button className='w-full  border-[#1D1D1D] rounded-[2px] border-[1px] py-2 font-bold text-[#2D2C40]' onClick={() => router.push('/cart')} >
+          <button className='w-full  border-[#1D1D1D] rounded-[2px] border-[1px] py-2 font-bold text-[#2D2C40]' onClick={handleAddToCart} >
             Add Cart
 
           </button>

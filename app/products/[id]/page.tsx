@@ -12,6 +12,8 @@ import { Category } from '@mui/icons-material';
 import useSWR from "swr";
 import Loading from '@/components/Loading';
 import { fetchData } from '@/apicalls/api';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '@/redux/cartSlice';
 
 interface FetchedProduct {
     _id: string;
@@ -20,7 +22,9 @@ interface FetchedProduct {
     description: string;
     images: { url: string }[];// Update this to the actual type of images if needed
     ratings: number;
-    category: string  // Update this to the actual type of ratings if needed
+    category: string;
+    heading:string;
+    stock:number // Update this to the actual type of ratings if needed
 }
 
 const descpara = [
@@ -53,7 +57,7 @@ function Productid({ params }: { params: { id: string } }) {
 
     const router = useRouter();
 
-
+     const dispatch=useDispatch();
 
 
     const [count, setcount] = useState(1);
@@ -87,7 +91,20 @@ function Productid({ params }: { params: { id: string } }) {
     if (!product || !category)
         return <div className="flex justify-center items-center"><Loading /></div>;
 
-
+        const handleAddToCart = () => {
+   
+            const productToAdd = {
+              id:product?._id,
+              img: product?.images ? product.images[0]?.url : "/gallery2.png", // Correct image path
+              name: product?.name,
+              price: product?.price,
+              quantity:count,
+              stock:product?.stock,
+              heading:product?.heading
+            };
+        
+            dispatch(addProduct(productToAdd));
+          };
 
 
 
@@ -139,7 +156,7 @@ function Productid({ params }: { params: { id: string } }) {
 
                     </div>
                     <div className='flex-1 flex flex-col  py-5'>
-                        <p className='descsmall text-[#242648] text-2xl mb-3 text-justify'>KAMI Beauty Professional Set Of Fiber Tip Eyelash Extensions Tweezers Japanese Steel Lash Supply</p>
+                        <p className='descsmall text-[#242648] text-2xl mb-3 text-justify'>{product?.heading}</p>
 
                         <span className='text-[#2697D3] mb-3 text-lg'>{product?.price}$</span>
 
@@ -147,11 +164,11 @@ function Productid({ params }: { params: { id: string } }) {
 
                         <div className=' mb-3 flex gap-4  justify-between'>
                             <button className='rounded-lg w-full flex justify-between items-center border-2 text-[#181F36] py-4 p-6 border-[#242648] text-2xl'><RemoveIcon
-                                onClick={() => setcount(count - 1)} />{count}<AddIcon onClick={() => setcount(count + 1)} /></button>
-                            <button className=' rounded-lg w-full text-center bg-[#242648] border-2 text-[#FFF] py-4 p-6 border-[#242648] '>Add Payment</button>
+                                onClick={() => setcount(count > 0 ? count-1 :0)} />{count}<AddIcon onClick={() => setcount(count + 1)} /></button>
+                            <button className=' rounded-lg w-full text-center bg-[#242648] border-2 text-[#FFF] py-4 p-6 border-[#242648] ' onClick={()=>router.push('/cart')}>Add Payment</button>
 
                         </div>
-                        <button className='mb-3  rounded-lg w-full  border-2 text-[#181F36] text-center py-4 p-6 border-[#242648] text-lg'>Add Cart</button>
+                        <button className='mb-3  rounded-lg w-full  border-2 text-[#181F36] text-center py-4 p-6 border-[#242648] text-lg' onClick={handleAddToCart}>Add Cart</button>
 
                     </div>
                 </div>
@@ -251,7 +268,7 @@ function Productid({ params }: { params: { id: string } }) {
                     {category?.map((item) => (
                         <>
                             <div className='mx-auto ' key={item._id}>
-                                <FeaturedCard name={item.name} images={item.images} desc={item.description} ratings={item.ratings} id={item._id} price={item.price} />
+                                <FeaturedCard category={item.category} name={item.name} stock={item.stock} images={item.images} desc={item.description} ratings={item.ratings} id={item._id} price={item.price} />
                             </div>
                         </>
                     ))}

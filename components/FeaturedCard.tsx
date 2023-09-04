@@ -11,7 +11,7 @@ const router=useRouter();
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    alert("hi cart")
+   
     const productToAdd = {
       id: id,
       img: images ? images[0]?.url : "/gallery2.png", // Correct image path

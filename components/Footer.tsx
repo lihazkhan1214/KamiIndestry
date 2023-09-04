@@ -31,11 +31,11 @@ function Footer() {
           <div className="bg-[#FFF] border-2 border-[#ccc] px-2 py-2 flex items-center justify-between relative h-15">
 
             <input className='px-2  focus:outline-none  placeholder:text-[#2B3D51] placeholder:font-bold' placeholder='Enter Your Email' type="text" />
-            <button className='bg-[#242648] hidden sm:block text-[#FFF] rounded px-6 py-2'>Subscribe</button>
+            <button className='bg-[#242648] hidden sm:block text-[#FFF] rounded px-6 py-2' onClick={()=>alert("Thanks for Subscrib")}>Subscribe</button>
 
 
           </div>
-          <button className='bg-[#242648] block my-2 sm:hidden text-[#FFF] rounded px-6 py-2'>Subscribe</button>
+          <button className='bg-[#242648] block my-2 sm:hidden text-[#FFF] rounded px-6 py-2' onClick={()=>alert("Thanks for Subscrib")}>Subscribe</button>
 
         </div>
         <div className="mt-10 flex justify-between  flex-wrap lg:flex-no-wrap items-center ">

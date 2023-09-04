@@ -16,6 +16,7 @@ interface FetchedProduct {
   name: string;
   price: number;
   stock:number
+  category:string;
   description: string;
   images: { url: string}[];// Update this to the actual type of images if needed
   ratings: number; // Update this to the actual type of ratings if needed
@@ -139,6 +140,7 @@ const CardCarousel: React.FC = () => {
             images={item.images}
             ratings={item.ratings}
             stock={item.stock}
+            category={item.category}
             key={ind}
           />
         ))}

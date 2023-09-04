@@ -8,6 +8,7 @@ export const POST = async (req: NextRequest) => {
 
 
     const newProduct = new Product(body);
+    console.log(body);
 
     try {
 

@@ -13,6 +13,11 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please enter product price"],
   },
+  heading:{
+    type:String,
+    required:true
+
+  },
   images: [
     {
       url: {

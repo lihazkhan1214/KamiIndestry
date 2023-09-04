@@ -47,7 +47,7 @@ export const PUT = async (
     try {
         const product = await Product.findByIdAndUpdate(id,body,{new:true})
 
-        return  NextResponse.json("product has been updated", { status: 200 });
+        return  NextResponse.json("product has been updated", { status: 201});
     } catch (err) {
         console.log(err);
         return  NextResponse.json(err, { status: 500 });

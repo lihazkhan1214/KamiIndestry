@@ -8,6 +8,7 @@ import ShopCatagory from "@/components/ShopCatagory";
 import Testimonail from "@/components/Testimonail";
 import Contact from "@/components/Contact";
 
+
 export default function Home() {
   return (
     <main className="bgcolor">
@@ -18,6 +19,7 @@ export default function Home() {
       <Testimonail/>
       <Gallery/>
       <Contact/>
+     
      
       
     

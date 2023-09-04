@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer';
 import { Providers } from './Provider';
+import AuthProvider from '@/components/AuthProvider/AuthProvider';
 
 export const metadata: Metadata = {
   title: 'WebCollect',
@@ -20,9 +21,11 @@ export default function RootLayout({
       <body className='bgcolor'>
     
       <Providers>
+        <AuthProvider>
         <Navbar/>
         {children}
         <Footer/>
+        </AuthProvider>
         </Providers>
        
         </body>

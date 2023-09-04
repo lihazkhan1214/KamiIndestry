@@ -23,6 +23,7 @@ export interface ProductType {
     name:string,
     desc?:string,
     images: { url: string}[],
+    category:string;
     price: number,
     ratings:number
     stock:number
