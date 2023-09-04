@@ -251,7 +251,7 @@ function Productid({ params }: { params: { id: string } }) {
                                     <label className='mx-2 globalpara text-[#1A1D3A]' htmlFor="">Save my name, email, and website in this browser for the next time I comment.</label>
 
                                 </div>
-                                <button typeof='submit' className='my-2 py-6 px-4 bg-[#242648] text-lg font-bold text-[#FFF]' onClick={()=>alert("you can review after payment")}>Submit</button>
+                                <button typeof='submit' className='my-2 py-6 px-4 bg-[#242648] text-lg font-bold text-[#FFF]' onClick={()=>alert("you can review after")}>Submit</button>
                             </form>
                         </div>
                 }
