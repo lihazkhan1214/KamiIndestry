@@ -79,7 +79,7 @@ const CardCarousel: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.API_URL}/api/products?featured=true`);
+        const response = await fetch(`/api/products?featured=true`);
         
         if (!response.ok) {
           throw new Error(`Fetch failed with status ${response.status}`);
