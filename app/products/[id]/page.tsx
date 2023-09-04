@@ -78,12 +78,12 @@ function Productid({ params }: { params: { id: string } }) {
 
 
     const { data: product, error: productError } = useSWR<FetchedProduct | null>(
-        `http://localhost:3000/api/products/${id}`,
+        `${process.env.API_URL}/api/products/${id}`,
         fetchData
     );
 
     const { data: category, error: categoryError } = useSWR<FetchedProduct[]>(
-        `http://localhost:3000/api/products?category=${product?.category}`,
+        `${process.env.API_URL}/api/products?category=${product?.category}`,
         fetchData
     );
 

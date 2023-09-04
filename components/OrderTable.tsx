@@ -51,7 +51,7 @@ const OrderTable: React.FC = () => {
   useEffect(() => {
   const GetData = async () => {
     try {
-      const res = await axios.get<Item[]>("http://localhost:3000/api/order"); // Specify the expected response type
+      const res = await axios.get<Item[]>(`${process.env.API_URL}/api/order`); // Specify the expected response type
       if (res) {
         setdata(res.data);
       } else {

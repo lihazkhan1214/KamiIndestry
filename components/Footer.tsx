@@ -8,7 +8,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 const info = [
   {
     Icon: <PhoneIcon />,
-    desc: "+923554250211​"
+    desc: "+923032345555​"
   },
   {
     Icon: <EmailIcon />,

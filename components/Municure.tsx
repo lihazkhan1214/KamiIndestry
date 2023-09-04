@@ -25,7 +25,7 @@ function Municure({municure}:MinicureProps) {
                     {
                         municure.map((item)=>(
                             <div className='mx-auto' key={item._id}>
-                            <CategoryCard stock={item.stock}  name={item.name} images={item.images} ratings={item.ratings} price={item.price} desc={item.description} id={item._id}/>
+                            <CategoryCard category={item.category} stock={item.stock}  name={item.name} images={item.images} ratings={item.ratings} price={item.price} desc={item.description} id={item._id}/>
            
                             </div>
 

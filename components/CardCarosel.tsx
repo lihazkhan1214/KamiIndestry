@@ -71,7 +71,7 @@ const SamplePrevArrow: React.FC<SampleArrowProps> = ({
 const CardCarousel: React.FC = () => {
   const [product, setProduct] = useState<FetchedProduct[]>([]);
 
-  const { data, error } = useSWR<FetchedProduct []>(`http://localhost:3000/api/products?featured=${true}`, fetchData);
+  const { data, error } = useSWR<FetchedProduct []>(`${process.env.API_URL}/api/products?featured=${true}`, fetchData);
 
   if (error) return <div>Error loading data</div>;
   if (!data) return <div className="flex justify-center items-center"><Loading/></div>;

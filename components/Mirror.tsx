@@ -3,6 +3,7 @@ import CategoryCard from './CategoryCard';
 interface FetchedProduct {
     _id: string;
     name: string;
+    stock:number;
     price: number;
     description: string;
     images: { url: string }[];// Update this to the actual type of images if needed
@@ -24,7 +25,7 @@ function Mirror({mirror}:MirrorProps) {
                     {
                         mirror.map((item)=>(
                             <div className='mx-auto' key={item._id}>
-                            <CategoryCard  name={item.name} images={item.images} ratings={item.ratings} price={item.price} desc={item.description} id={item._id}/>
+                            <CategoryCard category={item.category} stock={item.stock} name={item.name} images={item.images} ratings={item.ratings} price={item.price} desc={item.description} id={item._id}/>
            
                             </div>
 

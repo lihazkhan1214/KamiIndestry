@@ -37,7 +37,8 @@ interface FetchedProduct {
     description: string;
     images: { url: string }[];// Update this to the actual type of images if needed
     ratings: number;
-    category: string  // Update this to the actual type of ratings if needed
+    category: string
+    stock:number;  // Update this to the actual type of ratings if needed
 }
 
 function Shop() {
@@ -54,7 +55,7 @@ function Shop() {
             setCt('municure')
     }
     const { data, error } = useSWR<FetchedProduct []>(
-        'http://localhost:3000/api/products',
+        `${process.env.API_URL}/api/products`,
         fetchData
     );
 

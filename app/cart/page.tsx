@@ -116,7 +116,7 @@ function Cart() {
 
 
         try {
-            const res = await fetch(`http://localhost:3000/api/order`, {
+            const res = await fetch(`${process.env.API_URL}/api/order`, {
                 method: 'POST',
                 body: JSON.stringify({
                     customer: orderob.customer,

@@ -93,7 +93,7 @@ const router=useRouter();
   
     try {
 
-      const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+      const res = await fetch(`${process.env.API_URL}/api/products/${id}`, {
         method: "PUT",
         body: JSON.stringify({
           name,
@@ -115,7 +115,7 @@ const router=useRouter();
         const newData = { ...data, name, description, price, category, featured, images, stock };
 
       // Use the mutate function to revalidate and update the data
-      mutate(`http://localhost:3000/api/products/${id}`, newData, false);
+      mutate(`${process.env.API_URL}/api/products/${id}`, newData, false);
    alert("data has been updated")
         onClose();
        

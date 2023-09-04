@@ -43,7 +43,7 @@ const CustomDialog: React.FC<DialogProps> = ({ isOpen, onClose }) => {
   
     try {
 
-      const res = await fetch("http://localhost:3000/api/products", {
+      const res = await fetch(`${process.env.API_URL}/api/products`, {
         method: "POST",
         body: JSON.stringify({
           name,

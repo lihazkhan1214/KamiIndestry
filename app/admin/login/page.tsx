@@ -40,7 +40,7 @@ function Page() {
     if (status === "loading") {
       return <p>Loading...</p>;
     }
-    if (status === "authenticated") {
+    if ((status === "authenticated")&&(data.user.role==="admin")) {
       router.push("/admin/products")
     console.log("wakeel","unathecated")
 

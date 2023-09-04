@@ -33,9 +33,18 @@ function page() {
   const [currentPage, setCurrentPage] = useState(1);
   const session=useSession();
 const router=useRouter();
+console.log("ooorrdr",session);
+  
+
+
+
+  if ((session.data?.user?.role !== "admin")) {
+    router.push('/admin/login');
+  }
+  
   
   const { data, error } = useSWR<FetchedProduct[]>(
-    `http://localhost:3000/api/products`,
+    `${process.env.API_URL}/api/products`,
     fetchData
   );
   
@@ -77,14 +86,14 @@ if(session.data?.user.role !=="admin"){
 
   const handleDelete = async (id: string) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+      const res = await fetch(`${process.env.API_URL}/api/products/${id}`, {
         method: "DELETE",
       });
   
       if (res.status === 200) {
         // The request was successful, handle the response if needed
         const updatedData = data.filter((product) => product._id !== id);
-        mutate(`http://localhost:3000/api/products`, updatedData, false);
+        mutate(`${process.env.API_URL}/api/products`, updatedData, false);
         
         
       } else {
