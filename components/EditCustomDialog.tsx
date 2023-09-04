@@ -45,7 +45,7 @@ const EditCustomDialog: React.FC<DialogProps> = ({ isOpen, onClose,id }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.API_URL}/api/products/${id}`);
+        const response = await axios.get(`/api/products/${id}`);
         setData(response.data);
         setLoading(false);
       } catch (err) {
@@ -80,7 +80,7 @@ const EditCustomDialog: React.FC<DialogProps> = ({ isOpen, onClose,id }) => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${process.env.API_URL}/api/products/${id}`, {
+      const res = await fetch(`/api/products/${id}`, {
         method: "PUT",
         body: JSON.stringify({
           name,
@@ -97,7 +97,7 @@ const EditCustomDialog: React.FC<DialogProps> = ({ isOpen, onClose,id }) => {
         console.log("responsive ok");
         const newData = { ...data, name, description, price, category, featured, images, stock };
         // Use the mutate function to revalidate and update the data
-        mutate(`${process.env.API_URL}/api/products/${id}`, newData, false);
+        mutate(`/api/products/${id}`, newData, false);
         alert("Data has been updated");
         onClose();
       } else {

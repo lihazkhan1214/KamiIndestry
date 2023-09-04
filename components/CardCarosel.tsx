@@ -71,7 +71,7 @@ const SamplePrevArrow: React.FC<SampleArrowProps> = ({
 const CardCarousel: React.FC = () => {
   const [products, setProducts] = useState<FetchedProduct[] | null>([]);
 
-  // const { data, error } = useSWR<FetchedProduct []>(`${process.env.API_URL}/api/products?featured=${true}`, fetchData);
+  // const { data, error } = useSWR<FetchedProduct []>(`/api/products?featured=${true}`, fetchData);
 
 
   const [error, setError] = useState<Error | null>(null);

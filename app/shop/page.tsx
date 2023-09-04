@@ -55,7 +55,7 @@ function Shop() {
             setCt('municure')
     }
     const { data, error } = useSWR<FetchedProduct []>(
-        `${process.env.API_URL}/api/products`,
+        `/api/products`,
         fetchData
     );
 

@@ -42,7 +42,7 @@ function Page() {
   }
 
   const { data, error } = useSWR<FetchedProduct[]>(
-    `${process.env.API_URL}/api/products`,
+    `/api/products`,
     fetchData
   );
 
@@ -73,13 +73,13 @@ function Page() {
 
   const handleDelete = async (id: string) => {
     try {
-      const res = await fetch(`${process.env.API_URL}/api/products/${id}`, {
+      const res = await fetch(`/api/products/${id}`, {
         method: "DELETE",
       });
 
       if (res.status === 200) {
         const updatedData = data.filter((product) => product._id !== id);
-        mutate(`${process.env.API_URL}/api/products`, updatedData, false);
+        mutate(`/api/products`, updatedData, false);
       } else {
         console.error("Failed to delete product");
       }

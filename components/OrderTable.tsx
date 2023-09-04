@@ -29,7 +29,7 @@ const OrderTable: React.FC = () => {
   useEffect(() => {
     const GetData = async () => {
       try {
-        const res = await axios.get<Item[]>(`${process.env.API_URL}/api/order`);
+        const res = await axios.get<Item[]>(`/api/order`);
         if (res) {
           setdata(res.data);
         } else {

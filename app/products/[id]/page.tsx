@@ -78,18 +78,18 @@ function Productid({ params }: { params: { id: string } }) {
 
 
     const { data: product, error: productError } = useSWR<FetchedProduct | null>(
-        `${process.env.API_URL}/api/products/${id}`,
+        `/api/products/${id}`,
         fetchData
     );
 
     const { data: category, error: categoryError } = useSWR<FetchedProduct[]>(
-        `${process.env.API_URL}/products?category=${product?.category}`,
+        `/products?category=${product?.category}`,
         fetchData
     );
 
     // async function fetchProduct(id: string): Promise<FetchedProduct | null> {
     //     try {
-    //       const response = await fetch(`${process.env.API_URL}/api/products/${id}`);
+    //       const response = await fetch(`/api/products/${id}`);
     //       if (!response.ok) {
     //         throw new Error('Network response was not ok');
     //       }
@@ -101,7 +101,7 @@ function Productid({ params }: { params: { id: string } }) {
       
     //   async function fetchCategory(category: string): Promise<FetchedProduct[]> {
     //     try {
-    //       const response = await fetch(`${process.env.API_URL}/api/products?category=${category}`);
+    //       const response = await fetch(`/api/products?category=${category}`);
     //       if (!response.ok) {
     //         throw new Error('Network response was not ok');
     //       }
