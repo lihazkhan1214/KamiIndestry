@@ -65,7 +65,7 @@ function Page() {
         <>
             <div className="py-10 flex justify-center items-center">
                 <div className='w-full md:w-[40%] py-5 px-10 bg-[#FFF]'>
-                    <Image className='mt-5' src="/ecomercelogo.png" alt='not found' width={100} height={100} />
+                    <Image className='mt-5' src="/kamilogo.png" alt='not found' width={100} height={100} />
                     <form  onSubmit={handleSubmit} className='mt-5 flex flex-col gap-5' action="">
                         {Inputs.map((item, ind) => (
                             <div key={ind}>
