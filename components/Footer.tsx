@@ -26,7 +26,7 @@ function Footer() {
       <div className='padding-x py-4 bg-[#FFF]'>
 
         <div className='flex justify-between flex-col lg:flex-row'>
-          <Image src='/ecomercelogo.png' alt='' width={60} height={30} />
+          <Image src='/kamilogo.png' alt='' width={200} height={100} />
           <h1 className="globalHeading text-[#0A142F]">Subscribe Newsletters</h1>
           <div className="bg-[#FFF] border-2 border-[#ccc] px-2 py-2 flex items-center justify-between relative h-15">
 

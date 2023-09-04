@@ -28,7 +28,7 @@ function Navbar() {
 
 
         <div className='flex items-center'>
-          <Image src='/ecomercelogo.png' alt='not found' height={30} width={60} />
+          <Image src='/kamilogo.png' alt='not found' height={100} width={200} />
 
         </div>
         <div className='hidden lg:block navbar flex justify-center'>
