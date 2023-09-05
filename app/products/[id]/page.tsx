@@ -161,7 +161,7 @@ function Productid({ params }: { params: { id: string } }) {
 
             <div className='padding-x py-10 '>
 
-                <div className='bg-[#FFF] gap-10 font-bold text-shadow py-5 padding-x flex flex-col  lg:flex-row  '>
+                <div className='bg-[#FFF] gap-10 font-bold text-shadow mt-2 padding-x flex flex-col  lg:flex-row  '>
 
                     <div className='flex-1 '>
                         {
@@ -236,7 +236,7 @@ function Productid({ params }: { params: { id: string } }) {
               
                                 {             
                                     product.reviews?.map((item:any)=>(
-                                        <div className='flex gap-5 items-center' key={item.name}>
+                                        <div className='flex gap-5 items-center py-5' key={item.name}>
 
                                         <Image src={product.images[0]?.url } alt="not fuondt " width={100} height={100} />
                                         <div className='flex-1 flex items-center  gap-0'>
