@@ -14,6 +14,14 @@ import Loading from '@/components/Loading';
 import { fetchData } from '@/apicalls/api';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '@/redux/cartSlice';
+import StarRatings from "react-star-ratings"
+import axios from 'axios';
+interface ReviewType {
+    name: string;
+    email: string;
+    comment: string;
+    rating: number;
+}
 
 interface FetchedProduct {
     _id: string;
@@ -24,8 +32,11 @@ interface FetchedProduct {
     ratings: number;
     category: string;
     heading:string;
-    stock:number // Update this to the actual type of ratings if needed
+    stock:number ;
+    reviews: ReviewType[]; 
 }
+
+
 
 const descpara = [
     {
@@ -62,9 +73,13 @@ function Productid({ params }: { params: { id: string } }) {
 
     const [count, setcount] = useState(1);
     const [Index, setindex] = useState(0);
+   
     const [changecmp, setchangecmp] = useState('desc');
-    // const [product, setProduct] = useState<FetchedProduct | null>(null);
-    // const [category, setcategory] = useState<  []>([]);
+    // const [value, setvalue] = useState(0);
+    const [rating, setrating] = useState<number>(3);
+    const [name, setname] = useState<string>("");
+    const [email, setemail] = useState<string>("");
+    const [comment, setcomment] = useState<string>("");
     const changecompment = (arg: String) => {
 
         if (arg == "desc")
@@ -87,45 +102,6 @@ function Productid({ params }: { params: { id: string } }) {
         fetchData
     );
 
-    // async function fetchProduct(id: string): Promise<FetchedProduct | null> {
-    //     try {
-    //       const response = await fetch(`/api/products/${id}`);
-    //       if (!response.ok) {
-    //         throw new Error('Network response was not ok');
-    //       }
-    //       return await response.json();
-    //     } catch (error : any) {
-    //       throw new Error(`Failed to fetch product: ${error.message}`);
-    //     }
-    //   }
-      
-    //   async function fetchCategory(category: string): Promise<FetchedProduct[]> {
-    //     try {
-    //       const response = await fetch(`/api/products?category=${category}`);
-    //       if (!response.ok) {
-    //         throw new Error('Network response was not ok');
-    //       }
-    //       return await response.json();
-    //     } catch (error: any) {
-    //       throw new Error(`Failed to fetch category: ${error.message}`);
-    //     }
-    //   }
-      
-    //   // Usage:
-    //   // Replace with the desired product ID
-    //   const fetchData = async (): Promise<{ product: FetchedProduct | null; category: FetchedProduct[] | null }> => {
-    //     try {
-    //       const product = await fetchProduct(id);
-    //       const category = await fetchCategory(product?.category || ''); // Use an empty string as a fallback if category is undefined
-    //       return { product, category };
-    //     } catch (error) {
-    //       // Handle errors here
-    //       console.error(error);
-    //       return { product: null, category: null };
-    //     }
-    //   };
-      
-    //  const data = await fetchData();
 
      
 
@@ -148,11 +124,28 @@ function Productid({ params }: { params: { id: string } }) {
             dispatch(addProduct(productToAdd));
           };
 
-        //   const handleReview = (e: React.MouseEvent<HTMLButtonElement>) => {
-        //     e.preventDefault();
-        //     alert("You can give a review after payment");
-        //   }
-          
+        
+          const handleReview=async(e:any)=>{
+            e.preventDefault();
+           try {
+            const res= await axios.post('/api/reviews',{
+                name,
+                email,
+                comment,
+                rating,
+                id
+            });
+          if(res.status===201){
+            alert("Thanks for review")
+          }
+
+
+            
+           } catch (error) {
+            
+           }
+
+          }
 
 
     return (
@@ -239,61 +232,74 @@ function Productid({ params }: { params: { id: string } }) {
                         }
                     </div> :
                         <div className='w-[80%]'>
-                            <h5 className='text-lg mb-3 text-[#242648] font-medium'>1 review for Eyelash Tweezer</h5>
-                            <div className='flex gap-5 items-center'>
+                            <h5 className='text-lg mb-3 text-[#242648] font-medium'>{product.reviews.length} {product.name}</h5>
+              
+                                {             
+                                    product.reviews?.map((item:any)=>(
+                                        <div className='flex gap-5 items-center' key={item.name}>
 
-                                <Image src="/productbg.jpg" alt="not fuondt " width={100} height={100} />
-                                <div className='flex-1 flex items-center  gap-0'>
+                                        <Image src={product.images[0]?.url } alt="not fuondt " width={100} height={100} />
+                                        <div className='flex-1 flex items-center  gap-0'>
 
-                                    <Image className='mx-2' src="/Polygon.png" alt='hi' width={60} height={60} />
-                                    <div className=' w-[100%] bg-[#FFF] py-6 px-4 border-2 border-[#CCC] '>
-                                        <div className='my-2 flex justify-between'>
-                                            <h3 className=' text-lg font-medium text-[#242648]'>lihazkhan <span>-20 Agu,2023</span></h3>
-                                            <div>
-                                                <StarIcon className='text-[#EBA122]' />
-                                                <StarIcon className='text-[#EBA122]' />
-                                                <StarIcon className='text-[#EBA122]' />
-                                                <StarIcon className='text-[#EBA122]' />
-                                                <StarIcon className='text-[#EBA122]' />
-
+                                        <Image className='mx-2' src="/Polygon.png" alt='hi' width={60} height={60} />
+                                        <div className=' w-[100%] bg-[#FFF] py-6 px-4 border-2 border-[#CCC] '>
+                                            <div className='my-2 flex justify-between'>
+                                                <h3 className=' text-lg font-medium text-[#242648]'>{item?.name} <span>{item?.createdAt}</span></h3>
+                                                <div>
+                                            <StarRatings rating={item.rating}  starRatedColor="#ffb829" 
+                                                 numberOfStars={5} 
+                                                starDimension="20px" 
+                                                starSpacing="2px"
+                                                  name="rating"
+                                                 
+                                                                 />
+    
+                                                </div>
+    
+    
                                             </div>
-
-
+                                            <p className=' my-2 text-lg text-[#686973]'>{item?.comment}</p>
+    
+    
+    
                                         </div>
-                                        <p className=' my-2 text-lg text-[#686973]'>Excellent!</p>
-
-
-
+    
+                                    </div>
                                     </div>
 
-                                </div>
+                                    ))
+
+                                }
 
 
-                            </div>
+
+                           
                             <h1 className='my-2 globalHeading text-[#363636]'>Add Review</h1>
                             <h3 className='my-2 text-lg font-medium text-[#242648]'>Your rating *</h3>
 
                             <div>
 
-                                <StarIcon className='text-[#909090]' />
-                                <StarIcon className='text-[#909090]' />
-                                <StarIcon className='text-[#909090]' />
-                                <StarIcon className='text-[#909090]' />
-                                <StarIcon className='text-[#909090]' />
+                            <StarRatings  rating={rating}  starRatedColor="#ffb829" 
+                                             numberOfStars={5} 
+                                            starDimension="20px" 
+                                            starSpacing="2px"
+                                              name="rating"
+                                              changeRating={(e) => setrating(e)}
+                                                             />
                             </div>
 
-                            <form className='my-2 flex flex-col' action="">
-                                <textarea className='my-2 py-2 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC] h-[120px]' name="" id="" placeholder='Tour Review'></textarea>
-                                <input required className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="text" placeholder='Name*' />
+                            <form onSubmit={handleReview} className='my-2 flex flex-col' action="">
+                                <textarea required name="comment" className='my-2 py-2 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC] h-[120px]' onChange={(e)=>setcomment(e.target.value)}  id="" placeholder='To your Review'></textarea>
+                                <input required name="name" onChange={(e)=>setname(e.target.value)}   className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="text" placeholder='Name*' />
 
-                                <input className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="email" placeholder='Email*' />
+                                <input required name="email" onChange={(e)=>setemail(e.target.value)}  className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="email" placeholder='Email*' />
 
                                 <div className='flex items-center'>
                                     <input className='w-6 h-6  ' required type="checkbox" />
                                     <label className='mx-2 globalpara text-[#1A1D3A]' htmlFor="">Save my name, email, and website in this browser for the next time I comment.</label>
 
                                 </div>
-                                <button typeof='submit' className='my-2 py-6 px-4 bg-[#242648] text-lg font-bold text-[#FFF]' onClick={()=>alert("you can review after")}>Submit</button>
+                                <button typeof='submit' className='my-2 py-6 px-4 bg-[#242648] text-lg font-bold text-[#FFF]'>Submit</button>
                             </form>
                         </div>
                 }
