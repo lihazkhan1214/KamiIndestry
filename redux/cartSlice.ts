@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "./store";
 
 interface Product {
   id: string;
@@ -16,16 +15,11 @@ interface CartState {
   total: number;
 }
 
-const initialState: CartState = loadCartStateFromLocalStorage() || {
+const initialState: CartState = {
   products: [],
   quantity: 0,
   total: 0,
 };
-
-function loadCartStateFromLocalStorage(): CartState | null {
-  const cartStateJSON = localStorage.getItem("cart");
-  return cartStateJSON ? JSON.parse(cartStateJSON) : null;
-}
 
 const cartSlice = createSlice({
   name: "cart",
@@ -44,8 +38,6 @@ const cartSlice = createSlice({
 
       state.quantity += action.payload.quantity;
       state.total += action.payload.price * action.payload.quantity;
-
-      saveCartStateToLocalStorage(state);
     },
 
     increaseQuantity: (state, action: PayloadAction<string>) => {
@@ -58,8 +50,6 @@ const cartSlice = createSlice({
         productToUpdate.quantity++;
         state.quantity++;
         state.total += productToUpdate.price;
-
-        saveCartStateToLocalStorage(state);
       }
     },
     decreaseQuantity: (state, action: PayloadAction<string>) => {
@@ -72,8 +62,6 @@ const cartSlice = createSlice({
         productToUpdate.quantity--;
         state.quantity--;
         state.total -= productToUpdate.price;
-
-        saveCartStateToLocalStorage(state);
       }
     },
     removeProduct: (state, action: PayloadAction<string>) => {
@@ -90,8 +78,6 @@ const cartSlice = createSlice({
         state.products = updatedProducts;
         state.quantity -= removedProduct.quantity;
         state.total -= removedProduct.price * removedProduct.quantity;
-
-        saveCartStateToLocalStorage(state);
       }
     },
 
@@ -99,15 +85,9 @@ const cartSlice = createSlice({
       state.products = [];
       state.quantity = 0;
       state.total = 0;
-
-      saveCartStateToLocalStorage(state);
     },
   },
 });
-
-function saveCartStateToLocalStorage(cartState: CartState) {
-  localStorage.setItem("cart", JSON.stringify(cartState));
-}
 
 export const {
   addProduct,
@@ -117,6 +97,6 @@ export const {
   decreaseQuantity,
 } = cartSlice.actions;
 
-export const selectCart = (state: RootState) => state.cart;
+export const selectCart = (state: { cart: CartState }) => state.cart;
 
 export default cartSlice.reducer;

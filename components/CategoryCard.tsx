@@ -30,7 +30,7 @@ function CategoryCard({ name, images, price, desc, id, ratings,stock }: ProductT
   return (
     <>
       <div
-        className="block   shadow-xs sm:shadow-md md:shadow-lg lg:shadow-xl  border-[1px]  border-[#B0B0B0]  rounded-lg bg-[#FFF]">
+        className="block h-[450px]  shadow-xs sm:shadow-md md:shadow-lg lg:shadow-xl  border-[1px]  border-[#B0B0B0]  rounded-lg bg-[#FFF]">
 
         <div className='h-[200px] w-[100%] relative'>
           <Image

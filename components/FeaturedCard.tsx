@@ -25,7 +25,7 @@ const router=useRouter();
   };
 
   return (
-    <div className="block shadow-xs sm:shadow-md md:shadow-lg lg:shadow-xl border-[1px] border-[#B0B0B0] p-2 mx-2 rounded-lg bg-[#FFF]">
+    <div className="block shadow-xs h-[450px] sm:shadow-md md:shadow-lg lg:shadow-xl border-[1px] border-[#B0B0B0] p-2 mx-2 rounded-lg bg-[#FFF]">
       <div className='h-[200px] w-[100%] relative'>
         <Image
           className="rounded-t-lg relative cursor-pointer"
