@@ -8,7 +8,11 @@ import AuthProvider from '@/components/AuthProvider/AuthProvider';
 
 export const metadata: Metadata = {
   title: 'kamiindustries',
-  description: 'Created by Lihaz Khan',
+  description: '',
+  icons:{
+    icon:"/favicon.png"
+  }
+
 }
 
 export default function RootLayout({
