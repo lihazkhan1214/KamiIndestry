@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import ShopCatagory from "@/components/ShopCatagory";
 import Testimonail from "@/components/Testimonail";
 import Contact from "@/components/Contact";
+// import { EmailTemplate } from "@/components/EmailTemplate";
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
     <main className="bgcolor">
      
        <Hero/>
+   
        <ShopCatagory/>
       <FeatureProductList/>
       <Testimonail/>

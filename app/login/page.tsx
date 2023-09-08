@@ -53,11 +53,7 @@ function Page() {
         console.log("login state",login)
         const {email,password}=login;
         
-        // signIn("credentials",{
-        //     email,
-        //     password
-        // });
-        console.log("emai",email,"pass",password)
+        
         signIn('credentials',{email,password});
        
       };

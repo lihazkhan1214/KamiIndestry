@@ -102,20 +102,20 @@ class TestimonialSlider extends Component<TestimonialSliderProps> {
 // Example array of testimonials
 const testimonials: Testimonial[] = [
     {
-        title: "Lihaz khan",
+        title: "Jenefir Smith",
         desc: "I am Amazed by the Impeccable quality of Kami Industries Tweezzers They have Transformed my Beauty Routine, Making Eyebrow shaping Effortless  and Precise",
         img: "/Image.png"
     }
         ,
     {
-        title: "Lihaz khan",
+        title: "Jenefir Smith",
         desc: "I am Amazed by the Impeccable quality of Kami Industries Tweezzers They have Transformed my Beauty Routine, Making Eyebrow shaping Effortless  and Precise",
         img: "/Image.png"
     }
         ,
     
     {
-        title: "Lihaz khan",
+        title: "Jenefir Smith",
         desc: "I am Amazed by the Impeccable quality of Kami Industries Tweezzers They have Transformed my Beauty Routine, Making Eyebrow shaping Effortless  and Precise",
         img: "/Image.png"
     }

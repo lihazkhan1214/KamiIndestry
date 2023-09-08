@@ -35,7 +35,7 @@ function Footer() {
 
 
           </div>
-          <button className='bg-[#242648] block my-2 sm:hidden text-[#FFF] rounded px-6 py-2' onClick={()=>alert("Thanks for Subscrib")}>Subscribe</button>
+          <button className='bg-[#242648] block my-2 sm:hidden text-[#FFF] rounded px-6 py-2' onClick={()=>alert("Thanks for Subscribe")}>Subscribe</button>
 
         </div>
         <div className="mt-10 flex justify-between  flex-wrap lg:flex-no-wrap items-center ">

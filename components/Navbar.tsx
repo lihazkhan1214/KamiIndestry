@@ -28,7 +28,7 @@ function Navbar() {
 
 
         <div className='flex items-center'>
-          <Image src='/kamilogo.png' alt='not found' height={100} width={200} />
+          <Image src='/kamilogo.png' className='cursor-pointer' onClick={()=>router.push('/')} alt='not found' height={100} width={200} />
 
         </div>
         <div className='hidden lg:block navbar flex justify-center'>

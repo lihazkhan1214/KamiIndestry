@@ -14,12 +14,12 @@ interface InputItem {
 const Inputs: InputItem[] = [
    
     {
-        name: "email",
+        name: "Email",
         type: "email",
         placeholder: "Enter your Email"
     },
     {
-        name: "password",
+        name: "Password",
         type: "password",
         placeholder: "Enter your Password"
     }
@@ -42,12 +42,10 @@ function Page() {
     }
     if ((status === "authenticated")&&(data.user.role==="admin")) {
       router.push("/admin/products")
-    console.log("wakeel","unathecated")
+   
 
     }
-    // if (data?.user.role !== "admin" && status==="authenticated") {
-    //     router.push("/admin/orders")
-    //   }
+    
    
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -55,10 +53,7 @@ function Page() {
         console.log("login state",login)
         const {email,password}=login;
         
-        // signIn("credentials",{
-        //     email,
-        //     password
-        // });
+      
        
         signIn('credentials',{email,password});
        
