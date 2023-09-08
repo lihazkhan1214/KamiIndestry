@@ -25,8 +25,8 @@ const handler = NextAuth({
   },
   providers: [
     GoogleProvider({
-      clientId: "606397664506-o8ifdqq4csurb0dhts7gusvrnfu4pl05.apps.googleusercontent.com",
-      clientSecret: "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",
+      clientId:"844081451502-fpng3h8aci0lemd1l76f3abs6klbi4gu.apps.googleusercontent.com",
+      clientSecret:"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" ,
     }),
     // Email & Password
     CredentialsProvider({
