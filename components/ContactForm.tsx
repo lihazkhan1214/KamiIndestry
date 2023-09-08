@@ -1,20 +1,15 @@
 "use client"
 
 import React,{useState} from 'react';
-import emailjs from "emailjs-com";
+
 
 
 function ContactForm() {
   const handleSubmit = async(e: React.FormEvent<HTMLFormElement>)=> {
     e.preventDefault();
  
-    emailjs.sendForm('service_6jz4m2l', 'template_67y2y15',e.target as HTMLFormElement, 'k4eRTPcywcrqJuNjD')
-    .then((result) => {
-        console.log(result.text);
-    }, (error) => {
-        console.log(error.text);
-    });
- 
+   
+ alert("Thanks for Contacting");
     
 
     
