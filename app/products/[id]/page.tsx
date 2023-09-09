@@ -172,8 +172,8 @@ function Productid({ params }: { params: { id: string } }) {
                                         {
                             
                                             product?.images?.map((img, ind) => (
-                                                <div className=" w-[100px] h-[100px] relative">
-                                                <Image key={ind} src={img?.url} alt='not found' className='mb-3 cursor-pointer' onClick={() => setindex(ind)} fill/>
+                                                <div className=" w-[100px] h-[100px] relative" key={ind} >
+                                                <Image src={img?.url} alt='not found' className='mb-3 cursor-pointer' onClick={() => setindex(ind)} fill/>
                                                 </div>
                                             ))
                                         }
