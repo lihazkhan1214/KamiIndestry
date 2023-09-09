@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { signIn ,useSession} from 'next-auth/react';
 
 interface InputItem {
     name: string;
@@ -52,8 +53,17 @@ const Inputs: InputItem[] = [
 
     const [error, setError] = useState(false);
     const router = useRouter();
+    const session=useSession();
 
-
+    const { status,data} = session;
+  
+  
+    if (status === "loading") {
+      return <p>Loading...</p>;
+    }
+    if (status === "authenticated") {
+      router.push("/")
+    }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -129,7 +139,7 @@ const Inputs: InputItem[] = [
 
 
                     <div className="mt-5 flex flex-wrap md:flex-nowrap gap-5 items-center justify-between ">
-                        <Image src="/google.png" alt='not found' width={60} height={60} />
+                        <Image src="/google.png" className='cursor-pointer' alt='not found' onClick={()=>signIn('google')}  width={60} height={60} />
                         <Image src="/apple.png" alt='not found' width={60} height={60} />
                         <Image src="/facebook.png" alt='not found' width={60} height={60} />
 
