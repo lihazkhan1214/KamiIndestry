@@ -168,16 +168,19 @@ function Productid({ params }: { params: { id: string } }) {
                             product && (
                                 <div className='flex gap-5  items-center py-5'>
 
-                                    <div className=" ">
+                                   <div className='flex flex-col gap-5'>
                                         {
+                            
                                             product?.images?.map((img, ind) => (
-                                                <Image key={ind} src={img?.url} alt='not found' className='mb-3 cursor-pointer' onClick={() => setindex(ind)} width={100} height={100} />
+                                                <div className=" w-[100px] h-[100px] relative">
+                                                <Image key={ind} src={img?.url} alt='not found' className='mb-3 cursor-pointer' onClick={() => setindex(ind)} fill/>
+                                                </div>
                                             ))
                                         }
-
-                                    </div>
-                                    <div className=''>
-                                        <Image src={`${product?.images[Index]?.url}`} alt="" width={500} height={500} />
+</div>
+                                  
+                                    <div className=' w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] relative'>
+                                        <Image src={`${product?.images[Index]?.url}`} alt="" fill />
 
 
 
