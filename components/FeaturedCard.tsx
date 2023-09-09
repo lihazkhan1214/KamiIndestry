@@ -25,7 +25,7 @@ const router=useRouter();
   };
 
   return (
-    <div className="block shadow-xs h-[450px] sm:shadow-md md:shadow-lg lg:shadow-xl border-[1px] border-[#B0B0B0] p-2 mx-2 rounded-lg bg-[#FFF]">
+    <div className="block shadow-xs lg:h-[450px] sm:shadow-md md:shadow-lg lg:shadow-xl border-[1px] border-[#B0B0B0] p-2 mx-2 rounded-lg bg-[#FFF]">
       <div className='h-[200px] w-[100%] relative'>
         <Image
           className="rounded-t-lg relative cursor-pointer"
@@ -39,10 +39,10 @@ const router=useRouter();
       <div className="p-6">
         <div className='cursor-pointer' onClick={() => router.push(`/products/${id}`)}>
           <div className='flex justify-between cursor-pointer1'>
-            <h5 className='cardheading'>
+            <h5 className='cardheading text-[#2D2C40]'>
               {name}
             </h5>
-            <p>
+            <p className='font-semibold text-sm whitespace-pre-line   text-[#2D2C40] '>
               ${price}
             </p>
           </div>
@@ -56,8 +56,8 @@ const router=useRouter();
               name="rating"
             />
           </div>
-          <p className='mb-4 text-justify text-sm text-[#424242]'>
-            {desc?.substring(0, 150)}...
+          <p className='mb-4  whitespace-pre-line text-sm font-semibold text-center text-[#424242]'>
+            {desc?.substring(0, 120)}...
           </p>
         </div>
         <button className='w-full border-[#1D1D1D] rounded-[2px] border-[1px] py-2 font-bold text-[#2D2C40]' onClick={handleAddToCart}>

@@ -1,6 +1,9 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
+  const router=useRouter();
   return (
     <div className="relative">
       <div className="bg-[url('/mobilehero.png')]  sm:bg-[url('/hero2.png')] bg-cover bg-no-repeat bg-center h-[800px]">
@@ -22,7 +25,7 @@ const Hero = () => {
           <p className="w-[60%] sm:w-full text-white my-5 text-sm sm:globalpara  sm:text-3xl text-center ">Elevate your Grooming with kami Idustries Premium Tweezers</p>
           <h1 className="text-white my-5 text-center font-bold title lg:text-[130px]  "> Tweezers and <br className="" />Mirrors</h1>
           <p className="text-white my-5 text-sm  sm:globalpara sm:text-3xl text-center w-[60%] sm:w-full">Explore Exclusive Hair Removal, Stainless Steel <br />, Eyelash Tweezers and Mirrors</p>
-          <button className="my-5 text-lg font-semibold rounded text-[#1A1D3A] py-3 px-10 bg-[#FFF]">Shop Now</button>
+          <button className="my-5 text-lg font-semibold rounded text-[#1A1D3A] py-3 px-10 bg-[#FFF]" onClick={()=>router.push('/shop')}>Shop Now</button>
 
         </div>
       </div>

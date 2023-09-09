@@ -315,12 +315,12 @@ function Productid({ params }: { params: { id: string } }) {
             <div className='padding-x py-10'>
                 <h1 className='globalHeading mb-3 text-[#242648]'>Related Items</h1>
 
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
+                <div className='grid mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
 
 
                     {category?.map((item) => (
                         <>
-                            <div className='mx-auto ' key={item._id}>
+                            <div className='mx-auto' key={item._id}>
                                 <FeaturedCard category={item.category} name={item.name} stock={item.stock} images={item.images} desc={item.description} ratings={item.ratings} id={item._id} price={item.price} />
                             </div>
                         </>

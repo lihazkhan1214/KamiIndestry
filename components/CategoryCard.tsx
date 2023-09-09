@@ -30,7 +30,7 @@ function CategoryCard({ name, images, price, desc, id, ratings,stock }: ProductT
   return (
     <>
       <div
-        className="block h-[450px]  shadow-xs sm:shadow-md md:shadow-lg lg:shadow-xl  border-[1px]  border-[#B0B0B0]  rounded-lg bg-[#FFF]">
+        className="block   shadow-xs sm:shadow-md md:shadow-lg lg:shadow-xl  border-[1px]  border-[#B0B0B0]  rounded-lg bg-[#FFF]">
 
         <div className='h-[200px] w-[100%] relative'>
           <Image
@@ -63,16 +63,16 @@ function CategoryCard({ name, images, price, desc, id, ratings,stock }: ProductT
 
             </div>
             <div className=" mb-3 py-2 flex justify-between items-center">
-            <span className='text-[#292929]'>
+            <span className='text-[#292929] text-sm font-semibold'>
                Price:
               </span>
-              <span className='text-[#292929]'>
+              <span className='text-[#292929] text-lg font-sm'>
                 ${price}
               </span>
 
             </div>
-            <p className=' mb-4 text-justify text-sm text-[#424242]'>
-              {desc?.substring(0, 150)}...</p>
+            <p className=' mb-4  text-sm text-[#292929] font-semibold whitespace-pre-line  text-center'>
+              {desc?.substring(0,120)}...</p>
           </div>
           <button className='w-full  border-[#1D1D1D] rounded-[2px] border-[1px] py-2 font-bold text-[#2D2C40]' onClick={handleAddToCart} >
             Add Cart
