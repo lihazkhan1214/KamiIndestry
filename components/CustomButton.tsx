@@ -7,7 +7,7 @@ const CustomButton=({title}:CustomButtonProps)=> (
    <button className='custombutton'>{title}</button>
    
    
-   
+  
    
    </>
 
