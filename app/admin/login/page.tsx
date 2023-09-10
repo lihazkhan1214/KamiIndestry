@@ -7,6 +7,7 @@ import { useSession,signIn } from 'next-auth/react';
 
 interface InputItem {
     name: string;
+    label:string;
     type: string;
     placeholder: string;
 }
@@ -14,12 +15,13 @@ interface InputItem {
 const Inputs: InputItem[] = [
    
     {
-        name: "Email",
+        lable:"Email",
+        name: "email",
         type: "email",
         placeholder: "Enter your Email"
     },
-    {
-        name: "Password",
+    { lable:"password",
+        name: "password",
         type: "password",
         placeholder: "Enter your Password"
     }
