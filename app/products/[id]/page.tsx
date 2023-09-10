@@ -228,9 +228,10 @@ function Productid({ params }: { params: { id: string } }) {
                 {
                     changecmp === 'desc' ? <div>
                         {
-                            descpara.map((item, ind) => (
-                                <p key={ind} className='globalpara mb-3 text-[#181F36] tracking-tighter text-justify'> <span className='text-2xl mr-2 font-bold'>{item.title}</span>{item.desc} </p>
-
+                            descpara.map((item, ind) => (<>
+                                <h1 className='text-2xl mr-2 text-[#181F36] font-extrabold'>{item.title}</h1>
+                                <p key={ind} className='globalpara mb-3 text-[#828285] tracking-tighter text-justify'>{item.desc} </p>
+                                </>
                             ))
                         }
                     </div> :

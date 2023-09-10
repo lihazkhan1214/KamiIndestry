@@ -84,7 +84,7 @@ class TestimonialSlider extends Component<TestimonialSliderProps> {
                 </div>
                 <div className="flex-1">
                   <h1 className="globalHeading font-bold text-[#181F36] md:text-[#FFF]">{item.title}</h1>
-                  <p className="text-sm sm:text-lg font-bold text-[#181F36] text-justify md:text-[#FFF]">{item.desc}</p>
+                  <p className="text-sm sm:text-lg f text-[#181F36] text-justify md:text-[#FFF]">{item.desc}</p>
                 </div>
               </div>
             </div>
