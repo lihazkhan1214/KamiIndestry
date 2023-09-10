@@ -5,6 +5,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import Link from 'next/link';
 const info = [
   {
     Icon: <PhoneIcon />,
@@ -67,7 +68,7 @@ function Footer() {
           <p className='globalpara text-[#181F36]'>Copyright © 2023 Kami Industries | Powered by Kami Industries</p>
           <div className="flex">
             <span className='text-sm font-normal mx-2'>Follow us on Instagram</span>
-            <Image src="/instagram.png" alt=''  width={20} height={20}/>
+            <Link href='https://instagram.com/igkamiindustries?igshid=NzZlODBkYWE4Ng=='><Image src="/instagram.png" alt=''  width={20} height={20}/></Link>
 
           </div>
 

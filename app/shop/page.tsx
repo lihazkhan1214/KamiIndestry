@@ -8,6 +8,7 @@ import Eyebrow from '@/components/Eyebrow';
 import Eyelash from '@/components/Eyelash';
 import Mirror from '@/components/Mirror';
 import Municure from '@/components/Municure';
+import Predicure from '@/components/Predicure';
 
 
 const Links = [
@@ -27,6 +28,11 @@ const Links = [
         category: "municure",
         href: "#municure",
         title: "Municure Instruments"
+    }
+    , {
+        category: "predicure",
+        href: "#predicure",
+        title: "Predicure Instruments"
     }
 ];
 
@@ -51,8 +57,8 @@ function Shop() {
             setCt('eyelash')
         else if(arg=='mirror')
             setCt('mirror');
-            else
-            setCt('municure')
+            else if(arg==='predicure')
+            setCt('predicure')
     }
     const { data, error } = useSWR<FetchedProduct []>(
         `/api/products`,
@@ -67,6 +73,7 @@ function Shop() {
         const EyelashProducts = data.filter((product) => product.category === "Eyelash");
         const MirrorProducts = data.filter((product) => product.category === "Mirror");
         const MunicureProducts = data.filter((product) => product.category === "Municure");
+        const PredicureProducts = data.filter((product) => product.category === "Predicure");
 
     return (
         <>
@@ -74,7 +81,7 @@ function Shop() {
 
                 <h1 className='my-2 globalHeading text-center'>Product categories</h1>
 
-                <div className='mt-10 flex flex-wrap lg:flex-row justify-center'>
+                <div className='mt-10 flex flex-wrap mlg:flex-row justify-center'>
 
                     {
                         Links.map((item, ind) => (
@@ -100,6 +107,7 @@ function Shop() {
 <Eyelash eyelash={EyelashProducts}/>
 <Mirror mirror={MirrorProducts}/>
 <Municure municure={MunicureProducts} />
+<Predicure predicure={PredicureProducts} />
 
 
 

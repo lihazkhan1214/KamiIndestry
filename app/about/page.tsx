@@ -1,9 +1,12 @@
+"use client";
 import React from 'react';
 import Image from 'next/image';
 import Choise from '@/components/Choise';
 import Testimonail from '@/components/Testimonail';
+import { useRouter } from 'next/navigation';
 
 function About() {
+  const router=useRouter();
   return (
     <>
       {/* this is hero of about us page */}
@@ -21,7 +24,7 @@ function About() {
 
         <div className='flex-1'>
           <h1 className='globalHeading text-xl font-bold whitespace-no-wrap'>About <span className='text-[#2697D3]'>Kami Industries</span></h1>
-          <p className='globalpara text-justify text-[#3C3B3B] tracking-tighter whitespace-no-wrap'>At Kami Industries, we’ve been perfecting precision since 2022. Our tweezers are more than just tools – they’re your trusted companions for flawlessness. Designed with meticulous care, they effortlessly pluck, shape, and define, adding finesse to your every move. What sets us apart is our unwavering dedication to your satisfaction. Our customers aren’t just clients; they’re partners in our journey. We listen, learn, and evolve because your trust fuels our innovation. Discover the elegance of Kami Industries tweezers – a blend of time-honored craftsmanship and modern excellence, designed to empower your best self.</p>
+          <p className='globalpara text-justify text-[#3C3B3B] tracking-tighter whitespace-no-wrap'>At Kami Industries, we’ve been perfecting precision since 2023. Our tweezers are more than just tools – they’re your trusted companions for flawlessness. Designed with meticulous care, they effortlessly pluck, shape, and define, adding finesse to your every move. What sets us apart is our unwavering dedication to your satisfaction. Our customers aren’t just clients; they’re partners in our journey. We listen, learn, and evolve because your trust fuels our innovation. Discover the elegance of Kami Industries tweezers – a blend of time-honored craftsmanship and modern excellence, designed to empower your best self.</p>
 
         </div>
         <div className='flex-1  relative h-[350px]'>
@@ -43,7 +46,7 @@ function About() {
 
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <h1 className=' text-[#FFF] title text-center'>We deliver best quality <span className='text-[#2697D3]'>Tweezers</span></h1>
-            <button className='mt-5 border-2 border-[#FFF] rounded-sm text-lg font-bold px-6 py-2 text-[#FFF]'>Contact Us</button>
+            <button className='mt-5 border-2 border-[#FFF] rounded-sm text-lg font-bold px-6 py-2 text-[#FFF]' onClick={()=>router.push("/contact")}>Contact Us</button>
           </div>
         </div>
       </div>

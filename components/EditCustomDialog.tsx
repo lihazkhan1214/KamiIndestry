@@ -148,6 +148,7 @@ const EditCustomDialog: React.FC<DialogProps> = ({ isOpen, onClose,id }) => {
     <option value="Eyebrow">Eyebrow</option>
     <option value="Mirror">Mirror</option>
     <option value="Municure">Municure</option>
+    <option value="Predicure">Predicure</option>
 </select>
 <div className="flex gap-5"><label htmlFor=""  className="text-[#424242] text-lg">Featured</label>
 <input className="font-lg w-5" type="checkbox" onChange={(e)=>setFeatured(e.target.checked)}  id="checkBoxTrue" name="checkbox" />

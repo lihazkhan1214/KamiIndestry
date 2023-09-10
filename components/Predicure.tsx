@@ -10,20 +10,20 @@ interface FetchedProduct {
     ratings: number;
     category: string  // Update this to the actual type of ratings if needed
 }
-interface MinicureProps {
-    municure: FetchedProduct[];
+interface PredicureProps {
+    predicure: FetchedProduct[];
   }
-function Municure({municure}:MinicureProps) {
+function Predicure({predicure}:PredicureProps) {
     return (
         <>
-            <div className="padding-x py-10" id="municure">
+            <div className="padding-x py-10" id="predicure">
 
-                <h1 className='my-2 text-center globalHeading text-[#1A1D3A]'>Municure Instruments</h1>
+                <h1 className='my-2 text-center globalHeading text-[#1A1D3A]'>Predicure Instruments</h1>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
 
                     {
-                        municure.map((item)=>(
+                        predicure.map((item)=>(
                             <div className='mx-auto' key={item._id}>
                             <CategoryCard category={item.category} stock={item.stock}  name={item.name} images={item.images} ratings={item.ratings} price={item.price} desc={item.description} id={item._id}/>
            
@@ -51,4 +51,4 @@ function Municure({municure}:MinicureProps) {
     )
 }
 
-export default Municure
+export default Predicure

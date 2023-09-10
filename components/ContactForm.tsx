@@ -1,6 +1,7 @@
 "use client"
 
 import React,{useState} from 'react';
+import emailjs from '@emailjs/browser';
 
 
 
@@ -9,7 +10,12 @@ function ContactForm() {
     e.preventDefault();
  
    
- alert("Thanks for Contacting");
+    emailjs.sendForm('service_nk4pyg4', 'template_5fngysr',e.target as HTMLFormElement, 'r5ehKnvS_E3IxbTRu')
+    .then((result) => {
+        alert("Thank for Contact Us")
+    }, (error) => {
+        console.log(error.text);
+    });
     
 
     
