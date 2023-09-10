@@ -109,12 +109,23 @@ const CardCarousel: React.FC = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    
+    slidesToShow: 4,
+    slidesToScroll: 4,
     initialSlide: 0,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    swipeToSlide: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
     responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+          dots: true,
+        },
+      },
       {
         breakpoint: 1024,
         settings: {
@@ -153,7 +164,7 @@ const CardCarousel: React.FC = () => {
   // console.log("products", product);
 
   return (
-    <div className="px-10">
+    <div className="px-5">
       <Slider {...settings}>
         {products.map((item,ind) => (
           <FeaturedCard

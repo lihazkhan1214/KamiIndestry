@@ -72,9 +72,9 @@ function CategoryCard({ name, images, price, desc, id, ratings,stock }: ProductT
 
             </div>
             <p className=' mb-4  text-sm text-[#292929] font-semibold whitespace-pre-line  text-center'>
-              {desc?.substring(0,120)}...</p>
+              {desc?.substring(0,80)}...</p>
           </div>
-          <button className='w-full  border-[#1D1D1D] rounded-[2px] border-[1px] py-2 font-bold text-[#2D2C40]' onClick={handleAddToCart} >
+          <button className='w-full  bg-[#1C1F30] rounded-[2px] text-[#FFF]  border-[1px] py-2 font-bold text-[#2D2C40]' onClick={handleAddToCart} >
             Add Cart
 
           </button>

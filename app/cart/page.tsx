@@ -224,7 +224,8 @@ function Cart() {
                                             products.map((item, ind) => (
                                                 <tr className='border-b-2 border-[#242648]' key={ind}>
                                                     <td className=' p-5 flex flex-col lg:flex-row items-center gap-2'>
-                                                        <Image src={item?.img} alt='not found' width={100} height={100} />
+                                                        <div className="relative w-[100px] h-[100px]">
+                                                        <Image src={item?.img} alt='not found' fill /></div>
                                                         <div className='text-sm  font-semibold '>{item?.name}</div>
 
                                                     </td>

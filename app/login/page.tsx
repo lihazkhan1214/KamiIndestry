@@ -14,12 +14,12 @@ interface InputItem {
 const Inputs: InputItem[] = [
    
     {
-        name: "email",
+        name: "Email",
         type: "email",
         placeholder: "Enter your Email"
     },
     {
-        name: "password",
+        name: "Password",
         type: "password",
         placeholder: "Enter your Password"
     }

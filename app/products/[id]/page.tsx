@@ -31,9 +31,9 @@ interface FetchedProduct {
     images: { url: string }[];// Update this to the actual type of images if needed
     ratings: number;
     category: string;
-    heading:string;
-    stock:number ;
-    reviews: ReviewType[]; 
+    heading: string;
+    stock: number;
+    reviews: ReviewType[];
 }
 
 
@@ -68,12 +68,12 @@ function Productid({ params }: { params: { id: string } }) {
 
     const router = useRouter();
 
-     const dispatch=useDispatch();
+    const dispatch = useDispatch();
 
 
     const [count, setcount] = useState(1);
     const [Index, setindex] = useState(0);
-   
+
     const [changecmp, setchangecmp] = useState('desc');
     // const [value, setvalue] = useState(0);
     const [rating, setrating] = useState<number>(3);
@@ -103,49 +103,49 @@ function Productid({ params }: { params: { id: string } }) {
     );
 
 
-     
+
 
     if (productError || categoryError) return <div>Error loading data</div>;
     if (!product || !category)
         return <div className="flex justify-center items-center"><Loading /></div>;
 
-        const handleAddToCart = () => {
-   
-            const productToAdd = {
-              id:product?._id,
-              img: product?.images ? product.images[0]?.url : "/gallery2.png", // Correct image path
-              name: product?.name,
-              price: product?.price,
-              quantity:count,
-              stock:product?.stock,
-              heading:product?.heading
-            };
-        
-            dispatch(addProduct(productToAdd));
-          };
+    const handleAddToCart = () => {
 
-        
-          const handleReview=async(e:any)=>{
-            e.preventDefault();
-           try {
-            const res= await axios.post('/api/reviews',{
+        const productToAdd = {
+            id: product?._id,
+            img: product?.images ? product.images[0]?.url : "/gallery2.png", // Correct image path
+            name: product?.name,
+            price: product?.price,
+            quantity: count,
+            stock: product?.stock,
+            heading: product?.heading
+        };
+
+        dispatch(addProduct(productToAdd));
+    };
+
+
+    const handleReview = async (e: any) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post('/api/reviews', {
                 name,
                 email,
                 comment,
                 rating,
                 id
             });
-          if(res.status===201){
-            alert("Thanks for review")
-          }
+            if (res.status === 201) {
+                alert("Thanks for review")
+            }
 
 
-            
-           } catch (error) {
-            
-           }
 
-          }
+        } catch (error) {
+
+        }
+
+    }
 
 
     return (
@@ -166,19 +166,19 @@ function Productid({ params }: { params: { id: string } }) {
                     <div className='flex-1 '>
                         {
                             product && (
-                                <div className='flex gap-5  items-center py-5'>
+                                <div className='flex flex-col-reverse sm:flex-row  gap-5  items-center py-5'>
 
-                                   <div className='flex flex-col gap-5'>
+                                    <div className='flex flex-row sm:flex-col  gap-5'>
                                         {
-                            
+
                                             product?.images?.map((img, ind) => (
-                                                <div className=" w-[100px] h-[100px] relative" key={ind} >
-                                                <Image src={img?.url} alt='not found' className='mb-3 cursor-pointer' onClick={() => setindex(ind)} fill/>
+                                                <div className=" w-[50px] h-[50px] sm:w-[100px] sm:h-[100px] relative" key={ind} >
+                                                    <Image src={img?.url} alt='not found' className='mb-3 cursor-pointer' onClick={() => setindex(ind)} fill />
                                                 </div>
                                             ))
                                         }
-</div>
-                                  
+                                    </div>
+
                                     <div className=' w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] relative'>
                                         <Image src={`${product?.images[Index]?.url}`} alt="" fill />
 
@@ -199,16 +199,16 @@ function Productid({ params }: { params: { id: string } }) {
 
                     </div>
                     <div className='flex-1 flex flex-col  py-5'>
-                        <p className='descsmall text-[#242648] text-2xl mb-3 text-justify'>{product?.heading}</p>
+                        <p className='descsmall text-[#242648] tracking-tighter tex-xl   sm:text-2xl mb-3 text-justify'>{product?.heading}</p>
 
                         <span className='text-[#2697D3] mb-3 text-lg'>{product?.price}$</span>
 
                         <p className='global text-[#242648] text-shadow  text-justify mb-3'>{product?.description}</p>
 
-                        <div className=' mb-3 flex gap-4  justify-between'>
+                        <div className=' mb-3 flex gap-4 flex-col sm:flex-row justify-between'>
                             <button className='rounded-lg w-full flex justify-between items-center border-2 text-[#181F36] py-4 p-6 border-[#242648] text-2xl'><RemoveIcon
-                                onClick={() => setcount(count > 0 ? count-1 :0)} />{count}<AddIcon onClick={() => setcount(count + 1)} /></button>
-                            <button className=' rounded-lg w-full text-center bg-[#242648] border-2 text-[#FFF] py-4 p-6 border-[#242648] ' onClick={()=>router.push('/cart')}>Add Payment</button>
+                                onClick={() => setcount(count > 0 ? count - 1 : 0)} />{count}<AddIcon onClick={() => setcount(count + 1)} /></button>
+                            <button className=' rounded-lg w-full text-center bg-[#242648] border-2 text-[#FFF] py-4 p-6 border-[#242648] ' onClick={() => router.push('/cart')}>Add Payment</button>
 
                         </div>
                         <button className='mb-3  rounded-lg w-full  border-2 text-[#181F36] text-center py-4 p-6 border-[#242648] text-lg' onClick={handleAddToCart}>Add Cart</button>
@@ -229,73 +229,73 @@ function Productid({ params }: { params: { id: string } }) {
                     changecmp === 'desc' ? <div>
                         {
                             descpara.map((item, ind) => (
-                                <p key={ind} className='globalpara mb-3 text-[#181F36] text-justify'> <span className='text-2xl font-bold'>{item.title}</span>{item.desc} </p>
+                                <p key={ind} className='globalpara mb-3 text-[#181F36] tracking-tighter text-justify'> <span className='text-2xl mr-2 font-bold'>{item.title}</span>{item.desc} </p>
 
                             ))
                         }
                     </div> :
-                        <div className='w-[80%]'>
+                        <div className='sm:w-[80%]'>
                             <h5 className='text-lg mb-3 text-[#242648] font-medium'>{product.reviews.length} {product.name}</h5>
-              
-                                {             
-                                    product.reviews?.map((item:any)=>(
-                                        <div className='flex gap-5 items-center py-5' key={item.name}>
 
-                                        <Image src={product.images[0]?.url } alt="not fuondt " width={100} height={100} />
+                            {
+                                product.reviews?.map((item: any) => (
+                                    <div className='flex gap-5 items-center py-5' key={item.name}>
+
+                                        <Image src={product.images[0]?.url} alt="not fuondt " width={100} height={100} />
                                         <div className='flex-1 flex items-center  gap-0'>
 
-                                        <Image className='mx-2' src="/Polygon.png" alt='hi' width={60} height={60} />
-                                        <div className=' w-[100%] bg-[#FFF] py-6 px-4 border-2 border-[#CCC] '>
-                                            <div className='my-2 flex justify-between'>
-                                                <h3 className=' text-lg font-medium text-[#242648]'>{item?.name} <span>{item?.createdAt}</span></h3>
-                                                <div>
-                                            <StarRatings rating={item.rating}  starRatedColor="#ffb829" 
-                                                 numberOfStars={5} 
-                                                starDimension="20px" 
-                                                starSpacing="2px"
-                                                  name="rating"
-                                                 
-                                                                 />
-    
+                                            <Image className='mx-2' src="/Polygon.png" alt='hi' width={60} height={60} />
+                                            <div className=' w-[100%] bg-[#FFF] py-6 px-4 border-2 border-[#CCC] '>
+                                                <div className='my-2 flex justify-between'>
+                                                    <h3 className=' text-lg font-medium text-[#242648]'>{item?.name} <span>{item?.createdAt}</span></h3>
+                                                    <div>
+                                                        <StarRatings rating={item.rating} starRatedColor="#ffb829"
+                                                            numberOfStars={5}
+                                                            starDimension="20px"
+                                                            starSpacing="2px"
+                                                            name="rating"
+
+                                                        />
+
+                                                    </div>
+
+
                                                 </div>
-    
-    
+                                                <p className=' my-2 text-lg text-[#686973]'>{item?.comment}</p>
+
+
+
                                             </div>
-                                            <p className=' my-2 text-lg text-[#686973]'>{item?.comment}</p>
-    
-    
-    
+
                                         </div>
-    
-                                    </div>
                                     </div>
 
-                                    ))
+                                ))
 
-                                }
+                            }
 
 
 
-                           
+
                             <h1 className='my-2 globalHeading text-[#363636]'>Add Review</h1>
                             <h3 className='my-2 text-lg font-medium text-[#242648]'>Your rating *</h3>
 
                             <div>
 
-                            <StarRatings  rating={rating}  starRatedColor="#ffb829" 
-                                             numberOfStars={5} 
-                                            starDimension="20px" 
-                                            starSpacing="2px"
-                                              name="rating"
-                                              changeRating={(e) => setrating(e)}
-                                                             />
+                                <StarRatings rating={rating} starRatedColor="#ffb829"
+                                    numberOfStars={5}
+                                    starDimension="20px"
+                                    starSpacing="2px"
+                                    name="rating"
+                                    changeRating={(e) => setrating(e)}
+                                />
                             </div>
 
                             <form onSubmit={handleReview} className='my-2 flex flex-col' action="">
-                                <textarea required name="comment" className='my-2 py-2 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC] h-[120px]' onChange={(e)=>setcomment(e.target.value)}  id="" placeholder='To your Review'></textarea>
-                                <input required name="name" onChange={(e)=>setname(e.target.value)}   className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="text" placeholder='Name*' />
+                                <textarea required name="comment" className='my-2 py-2 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC] h-[120px]' onChange={(e) => setcomment(e.target.value)} id="" placeholder='To your Review'></textarea>
+                                <input required name="name" onChange={(e) => setname(e.target.value)} className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="text" placeholder='Name*' />
 
-                                <input required name="email" onChange={(e)=>setemail(e.target.value)}  className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="email" placeholder='Email*' />
+                                <input required name="email" onChange={(e) => setemail(e.target.value)} className='my-2 py-6 px-4 border-2 placeholder:text-[#626262] outline-none border-[#CCC]' type="email" placeholder='Email*' />
 
                                 <div className='flex items-center'>
                                     <input className='w-6 h-6  ' required type="checkbox" />
@@ -318,7 +318,7 @@ function Productid({ params }: { params: { id: string } }) {
             <div className='padding-x py-10'>
                 <h1 className='globalHeading mb-3 text-[#242648]'>Related Items</h1>
 
-                <div className='grid mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
+                <div className='grid mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5'>
 
 
                     {category?.map((item) => (

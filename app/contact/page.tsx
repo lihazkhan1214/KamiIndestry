@@ -53,7 +53,7 @@ function Contact() {
                                     </div>
                                     <div>
                                         <h3 className='cardheading text-[#363636]'>{item.title}</h3>
-                                        <p className='text-sm text-[#41425F]'>{item.desc}</p>
+                                        <p className='text-sm  text-[#41425F]'>{item.desc}</p>
 
                                     </div>
                                 </div>

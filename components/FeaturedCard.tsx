@@ -25,7 +25,7 @@ const router=useRouter();
   };
 
   return (
-    <div className="block shadow-xs lg:h-[450px] sm:shadow-md md:shadow-lg lg:shadow-xl border-[1px] border-[#B0B0B0] p-2 mx-2 rounded-lg bg-[#FFF]">
+    <div className="block shadow-xs  sm:shadow-md md:shadow-lg lg:shadow-xl border-[1px] border-[#B0B0B0] p-2 mx-2 rounded-lg bg-[#FFF]">
       <div className='h-[200px] w-[100%] relative'>
         <Image
           className="rounded-t-lg relative cursor-pointer"
@@ -57,7 +57,7 @@ const router=useRouter();
             />
           </div>
           <p className='mb-4  whitespace-pre-line text-sm font-semibold text-center text-[#424242]'>
-            {desc?.substring(0, 120)}...
+            {desc?.substring(0, 80)}...
           </p>
         </div>
         <button className='w-full border-[#1D1D1D] rounded-[2px] border-[1px] py-2 font-bold text-[#2D2C40]' onClick={handleAddToCart}>

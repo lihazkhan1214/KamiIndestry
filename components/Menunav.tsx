@@ -37,7 +37,7 @@ const router=useRouter();
             <li className="px-4 py-2 hover:bg-gray-100">
               <Link className='break-normal text-[#1A1D3A]' href='/cart' onClick={toggleMenu}><CartBadge/><span>MyCart</span></Link></li>
             <li className="px-4 py-2 hover:bg-gray-100">
-           <div className='break-normal text-[#1A1D3A]' > <AccountCircleIcon className="" />{session.status === 'authenticated' ? <span onClick={() => signOut()}>Logout</span> : <span onClick={() => router.push('/login')}>SignIn</span>} </div> </li>
+           <div className='break-normal text-[#1A1D3A]' > <AccountCircleIcon className="" />{session.status === 'authenticated' ? <span onClick={() => signOut()}>Logout</span> : <span onClick={() => router.push('/login')}>Sign In</span>} </div> </li>
 
 
           </ul>

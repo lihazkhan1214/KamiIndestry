@@ -20,8 +20,8 @@ function About() {
       <div className='flex justify-between gap-20  items-center flex-col lg:flex-row   padding-x padding-y mt-10'>
 
         <div className='flex-1'>
-          <h1 className='globalHeading'>About <span className='text-[#2697D3]'>Kami Industries</span></h1>
-          <p className='globalpara text-justify text-[#3C3B3B]'>At Kami Industries, we’ve been perfecting precision since 2022. Our tweezers are more than just tools – they’re your trusted companions for flawlessness. Designed with meticulous care, they effortlessly pluck, shape, and define, adding finesse to your every move. What sets us apart is our unwavering dedication to your satisfaction. Our customers aren’t just clients; they’re partners in our journey. We listen, learn, and evolve because your trust fuels our innovation. Discover the elegance of Kami Industries tweezers – a blend of time-honored craftsmanship and modern excellence, designed to empower your best self.</p>
+          <h1 className='sm:globalHeading text-xl font-bold whitespace-no-wrap'>About <span className='text-[#2697D3]'>Kami Industries</span></h1>
+          <p className='globalpara text-justify text-[#3C3B3B] tracking-tighter whitespace-no-wrap'>At Kami Industries, we’ve been perfecting precision since 2022. Our tweezers are more than just tools – they’re your trusted companions for flawlessness. Designed with meticulous care, they effortlessly pluck, shape, and define, adding finesse to your every move. What sets us apart is our unwavering dedication to your satisfaction. Our customers aren’t just clients; they’re partners in our journey. We listen, learn, and evolve because your trust fuels our innovation. Discover the elegance of Kami Industries tweezers – a blend of time-honored craftsmanship and modern excellence, designed to empower your best self.</p>
 
         </div>
         <div className='flex-1  relative h-[350px]'>

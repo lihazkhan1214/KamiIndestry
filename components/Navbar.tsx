@@ -43,7 +43,7 @@ function Navbar() {
 
 
           <Link href='/cart' className='mx-6 text-[#1A1D3A] text-lg font-medium hover:text-[#2697D3]'> <CartBadge /> MyCart</Link>
-          <div className='mx-6 text-[#1A1D3A] cursor-pointer  text-lg font-medium hover:text-[#2697D3]'> <AccountCircleIcon className="" />{session.status === 'authenticated' ? <span onClick={() => signOut()}>Logout</span> : <span onClick={() => router.push('/login')}>SignIn</span>} </div>
+          <div className='mx-6 text-[#1A1D3A] cursor-pointer  text-lg font-medium hover:text-[#2697D3]'> <AccountCircleIcon className="" />{session.status === 'authenticated' ? <span onClick={() => signOut()}>Logout</span> : <span onClick={() => router.push('/login')}>Sign In</span>} </div>
 
         </div>
         </div>
