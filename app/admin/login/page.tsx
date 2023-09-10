@@ -7,25 +7,25 @@ import { useSession,signIn } from 'next-auth/react';
 
 interface InputItem {
     name: string;
-    label:string;
+    label: string;
     type: string;
     placeholder: string;
-}
-
-const Inputs: InputItem[] = [
-   
+  }
+  
+  const Inputs: InputItem[] = [
     {
-        lable:"Email",
-        name: "email",
-        type: "email",
-        placeholder: "Enter your Email"
+      name: "email",
+      label: "Email",
+      type: "email",
+      placeholder: "Enter your Email",
     },
-    { lable:"password",
-        name: "password",
-        type: "password",
-        placeholder: "Enter your Password"
-    }
-];
+    {
+      name: "password",
+      label: "Password",
+      type: "password",
+      placeholder: "Enter your Password",
+    },
+  ];
 
 function Page() {
     const session=useSession();
@@ -68,7 +68,7 @@ function Page() {
                     <form  onSubmit={handleSubmit} className='mt-5 flex flex-col gap-5' action="">
                         {Inputs.map((item, ind) => (
                             <div key={ind}>
-                                <label className='text-[#1C1F30] block font-bold  text-xl' htmlFor={item.name}>{item.name} :</label>
+                                <label className='text-[#1C1F30] block font-bold  text-xl' >{item.label} :</label>
                                 <input
                                     className='w-full rounded-lg py-3 px-6 border-2 placeholder:text-[#A3A3A3] border-[#1C1F30]'
                                     type={item.type}
