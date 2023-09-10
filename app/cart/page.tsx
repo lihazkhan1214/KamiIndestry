@@ -213,7 +213,7 @@ function Cart() {
                                         <tr>
                                             <th className='pl-6 -6 py-3 text-start whitespace-nowrap'>Product</th>
                                             <th className='py-3 text-center whitespace-nowrap'>Unit Price</th>
-                                            <th className='py-3 text-center whitespace-nowrap'>Quantity</th>
+                                            <th className='py-3  whitespace-nowrap'>Quantity</th>
                                             <th className='py-3 text-center whitespace-nowrap'>Stock Status</th>
                                             <th className='py-3 text-center whitespace-nowrap'>Total</th>
                                             <th></th>
@@ -222,7 +222,7 @@ function Cart() {
                                     <tbody>
                                         {
                                             products.map((item, ind) => (
-                                                <tr className='border-b-2 border-[#242648]' key={ind}>
+                                                <tr className='border-b-2 border-[#242648] py-auto' key={ind}>
                                                     <td className=' p-5 flex flex-col lg:flex-row items-center gap-2'>
                                                         <div className="relative w-[100px] h-[100px]">
                                                         <Image src={item?.img} alt='not found' fill /></div>
@@ -231,8 +231,10 @@ function Cart() {
                                                     </td>
 
                                                     <td className='text-sm  font-semibold text-center'>{item.price.toFixed(2)}$</td>
-                                                    <td className='text-sm   text-center font-semibold'>
-                                                        <button className='text-[#242648] border-2 border-[#242648] rounded-lg px-6 py-4 flex flex-nowrap text-center gap-2'> <RemoveIcon onClick={() => handleDecreaseQuantity(item?.id)} className='mx-2' />{item?.quantity}<AddIcon onClick={() => handleIncreaseQuantity(item?.id)} className='mx-2' /></button>
+                                                    <td className='text-sm  align-middle   text-center font-semibold'>
+                                                       
+                                                        <button className='text-[#242648] inline-block border-2 border-[#242648] rounded-lg px-6 py-4  gap-2'> <RemoveIcon onClick={() => handleDecreaseQuantity(item?.id)} className='mx-2' />{item?.quantity}<AddIcon onClick={() => handleIncreaseQuantity(item?.id)} className='mx-2' /></button>
+                                                     
 
                                                     </td>
                                                     <td className='text-sm text-center  font-semibold whitespace-nowrap'>{item?.stock}</td>

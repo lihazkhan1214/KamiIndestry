@@ -83,8 +83,8 @@ class TestimonialSlider extends Component<TestimonialSliderProps> {
                   <Image src={item.img} alt="" width={350} height={350} />
                 </div>
                 <div className="flex-1">
-                  <h1 className="globalHeading text-[#181F36] md:text-[#FFF]">{item.title}</h1>
-                  <p className="text-sm font-semibold text-[#181F36] text-justify md:text-[#FFF]">{item.desc}</p>
+                  <h1 className="globalHeading font-bold text-[#181F36] md:text-[#FFF]">{item.title}</h1>
+                  <p className="text-sm sm:text-lg font-bold text-[#181F36] text-justify md:text-[#FFF]">{item.desc}</p>
                 </div>
               </div>
             </div>

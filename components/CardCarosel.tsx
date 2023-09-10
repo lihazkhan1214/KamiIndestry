@@ -115,7 +115,7 @@ const CardCarousel: React.FC = () => {
     initialSlide: 0,
     swipeToSlide: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 5000,
     responsive: [
       {
         breakpoint: 1280,

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'kamiindustries',
   description: 'Explore Exclusive Municure Hair Removal, Stainless Steel Eyebrow Tweezers, Eyelash Tweezers, and Mirrors. Shop by Categories and Discover Why Choose Us. Explore Our Featured Products, including the Municure Mirror, to Elevate Your Grooming Experience.',
   icons:{
-    icon:"/favicon.png"
+    icon:"/shortlogo.png"
   }
 
 }

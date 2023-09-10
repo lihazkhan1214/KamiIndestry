@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: [true, "Please enter your username"],
   },
   email: {
     type: String,
@@ -14,7 +13,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Please enter your password"],
-    minLength: [6, "Your password must be longer than 6 characters"],
+    minLength: [3, "Your password must be longer than 6 characters"],
   },
   role: {
     type: String,
