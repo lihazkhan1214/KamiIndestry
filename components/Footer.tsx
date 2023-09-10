@@ -25,10 +25,10 @@ function Footer() {
     <>
       <div className='padding-x py-4 bg-[#FFF]'>
 
-        <div className='flex justify-between flex-col lg:flex-row'>
-          <div className='relative w-[180px] h-[50px]'>
-            <Image src='/kamilogo.png' alt='not found' fill />
-          </div>
+        <div className='flex justify-between items-center flex-col lg:flex-row'>
+         
+            <Image src='/logo.png' alt='not found' width={220} height={100} />
+          
           
           <h1 className="globalHeading text-[#0A142F]">Subscribe Newsletters</h1>
           <div className="bg-[#FFF] border-2 border-[#ccc] px-2 py-2 flex items-center justify-between relative h-15">
