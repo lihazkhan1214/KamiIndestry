@@ -31,8 +31,8 @@ const categories = [
     },
     {
         img: "/predicure.png",
-        title: "Predicure Instruments",
-        url: "/shop/#predicure"
+        title: "Pedicure Instruments",
+        url: "/shop/#pedicure"
     },
 
 ]

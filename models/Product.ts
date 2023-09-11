@@ -35,7 +35,7 @@ const productSchema = new mongoose.Schema({
         "Eyebrow",
         "Mirror",
         "Municure",
-        "Predicure"
+        "Pedicure"
       ],
       message: "Please select correct category",
     },

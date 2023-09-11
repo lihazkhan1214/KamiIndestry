@@ -100,7 +100,7 @@ const CustomDialog: React.FC<DialogProps> = ({ isOpen, onClose }) => {
     <option value="Eyebrow">Eyebrow</option>
     <option value="Mirror">Mirror</option>
     <option value="Municure">Municure</option>
-    <option value="Predicure">Predicure</option>
+    <option value="Pedicure">Pedicure</option>
 </select>
 <div className="flex gap-5"><label htmlFor=""  className="text-[#424242] text-lg">Featured</label>
 <input className="font-lg w-5" type="checkbox" onChange={(e)=>setFeatured(e.target.checked)} id="checkBoxTrue" name="checkbox" />

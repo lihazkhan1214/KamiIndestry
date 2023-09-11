@@ -10,20 +10,20 @@ interface FetchedProduct {
     ratings: number;
     category: string  // Update this to the actual type of ratings if needed
 }
-interface PredicureProps {
-    predicure: FetchedProduct[];
+interface PedicureProps {
+    pedicure: FetchedProduct[];
   }
-function Predicure({predicure}:PredicureProps) {
+function Pedicure({pedicure}:PedicureProps) {
     return (
         <>
-            <div className="padding-x py-10" id="predicure">
+            <div className="padding-x py-10" id="pedicure">
 
-                <h1 className='my-2 text-center globalHeading text-[#1A1D3A]'>Predicure Instruments</h1>
+                <h1 className='my-2 text-center globalHeading text-[#1A1D3A]'>Pedicure Instruments</h1>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
 
                     {
-                        predicure.map((item)=>(
+                        pedicure.map((item)=>(
                             <div className='mx-auto' key={item._id}>
                             <CategoryCard category={item.category} stock={item.stock}  name={item.name} images={item.images} ratings={item.ratings} price={item.price} desc={item.description} id={item._id}/>
            
@@ -51,4 +51,4 @@ function Predicure({predicure}:PredicureProps) {
     )
 }
 
-export default Predicure
+export default Pedicure

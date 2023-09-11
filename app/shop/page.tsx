@@ -8,7 +8,7 @@ import Eyebrow from '@/components/Eyebrow';
 import Eyelash from '@/components/Eyelash';
 import Mirror from '@/components/Mirror';
 import Municure from '@/components/Municure';
-import Predicure from '@/components/Predicure';
+import Pedicure from '@/components/Pedicure';
 
 
 const Links = [
@@ -73,7 +73,7 @@ function Shop() {
         const EyelashProducts = data.filter((product) => product.category === "Eyelash");
         const MirrorProducts = data.filter((product) => product.category === "Mirror");
         const MunicureProducts = data.filter((product) => product.category === "Municure");
-        const PredicureProducts = data.filter((product) => product.category === "Predicure");
+        const PedicureProducts = data.filter((product) => product.category === "Pedicure");
 
     return (
         <>
@@ -107,7 +107,7 @@ function Shop() {
 <Eyelash eyelash={EyelashProducts}/>
 <Mirror mirror={MirrorProducts}/>
 <Municure municure={MunicureProducts} />
-<Predicure predicure={PredicureProducts} />
+<Pedicure pedicure={PedicureProducts} />
 
 
 
