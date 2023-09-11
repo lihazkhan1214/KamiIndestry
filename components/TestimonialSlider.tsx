@@ -108,16 +108,16 @@ const testimonials: Testimonial[] = [
     }
         ,
     {
-        title: "Jenefir Smith",
-        desc: "I am Amazed by the Impeccable quality of Kami Industries Tweezzers They have Transformed my Beauty Routine, Making Eyebrow shaping Effortless  and Precise",
-        img: "/Image.png"
+        title: "Jenelia Ryan",
+        desc: "I'm absolutely amazed by the impeccable quality of Kami Industries Tweezers! They've completely transformed my beauty routine, making eyebrow shaping effortless and incredibly precise. These tweezers are a game-changer, and I couldn't be happier with the results.",
+        img: "/Image2.png"
     }
         ,
     
     {
-        title: "Jenefir Smith",
-        desc: "I am Amazed by the Impeccable quality of Kami Industries Tweezzers They have Transformed my Beauty Routine, Making Eyebrow shaping Effortless  and Precise",
-        img: "/Image.png"
+        title: "Charlotte",
+        desc: "Kami Industries Tweezers have elevated my beauty game to a whole new level. Their impeccable quality makes shaping my eyebrows effortlessly precise. These tweezers have become an indispensable part of my beauty routine, and I'm absolutely amazed by the results!",
+        img: "/Image3.png"
     }
   // Add more testimonials here
 ];

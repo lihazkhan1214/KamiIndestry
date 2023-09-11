@@ -22,9 +22,9 @@ const Hero = () => {
         </div>
 
         <div className="absolute inset-0 flex flex-col items-center justify-start mt-12 sm:mt-0 sm:justify-center">
-          <p className="w-[60%] sm:w-full text-white my-5 text-sm sm:globalpara  sm:text-3xl text-center ">Elevate your Grooming with KAMI Industries Premium Tweezers</p>
-          <h1 className="text-white my-5 text-center font-bold title lg:text-[130px]  "> Tweezers and <br className="" />Mirrors</h1>
-          <p className="text-white my-5 text-sm  sm:globalpara sm:text-3xl text-center w-[60%] sm:w-full">Explore Exclusive Hair Removal, Stainless Steel ,<br /> Eyelash Tweezers and Mirrors</p>
+          <p className="w-[60%] sm:w-full text-white my-5 text-sm sm:globalpara  sm:text-3xl text-center ">Elevate Your Beauty Routine with Premium Instruments and Tools</p>
+          <h1 className="text-white my-5 text-center font-bold title lg:text-[100px]  "> Your Source for Beauty  <br className="" />Instruments</h1>
+          <p className="text-white my-5 text-sm  sm:globalpara sm:text-3xl text-center w-[60%] sm:w-full">Explore Exclusive Stainless Steel Eyelash Tweezers ,<br /> Eyebrow Tweezers, Manicure and Pedicure Instruments</p>
           <button className="my-5 text-lg font-semibold rounded text-[#1A1D3A] py-3 px-10 bg-[#FFF]" onClick={()=>router.push('/shop')}>Shop Now</button>
 
         </div>
