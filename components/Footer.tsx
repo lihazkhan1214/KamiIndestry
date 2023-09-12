@@ -13,7 +13,7 @@ const info = [
   },
   {
     Icon: <EmailIcon />,
-    desc: "info@kamiindustries.com​"
+    desc: "kamiindustriesofficial@gmail.com​"
   },
   {
     Icon: <PinDropIcon />,

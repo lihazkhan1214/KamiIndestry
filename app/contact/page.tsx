@@ -18,7 +18,7 @@ const info = [
     {
         title: "Email",
         Icon: <EmailIcon className='text-5xl bg-[#F6F6F6] p-1 rounded-full cursor-pointer' />,
-        desc: "info@kamiindustries.com​"
+        desc: "kamiindustriesofficial@gmail.com​"
     }
 ];
 
